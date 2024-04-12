@@ -39,7 +39,7 @@ const neoSchema = new Neo4jGraphQL({ resolvers, typeDefs, driver })
 const initServer = async () => {
   console.log('Building GQL serer')
   const schema = await neoSchema.getSchema()
-  // console.log(schema);
+  // console.log(schema)
   return schema
 }
 
