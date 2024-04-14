@@ -1,10 +1,11 @@
 import { startServerAndCreateNextHandler } from '@as-integrations/next'
 import { ApolloServer } from '@apollo/server'
 import { NextRequest } from 'next/server'
-import { gql } from 'graphql-tag'
+
 import neo4j from 'neo4j-driver'
 import { Neo4jGraphQL } from '@neo4j/graphql'
 import { createYoga } from 'graphql-yoga'
+import { typeDefs } from '@/app/graphql/schema'
 
 // Neo4j driver
 const driver = neo4j.driver(
@@ -12,21 +13,7 @@ const driver = neo4j.driver(
   neo4j.auth.basic(process.env.NEO4J_USER as string, process.env.NEO4J_PASSWORD as string),
 )
 
-const typeDefs = gql`
-  type Query {
-    hello: String
-  }
 
-  type Movie {
-    title: String
-    actors: [Actor!]! @relationship(type: "ACTED_IN", direction: IN)
-  }
-
-  type Actor {
-    name: String
-    movies: [Movie!]! @relationship(type: "ACTED_IN", direction: OUT)
-  }
-`
 
 const resolvers = {
   Query: {

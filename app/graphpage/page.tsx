@@ -18,17 +18,15 @@ const GraphMovies = async () => {
   const { data } = await client.query({
     query: query,
   })
-  console.log('Data', data.movies)
+  console.log('Data', data)
   const dataArr = data.movies.map((t: movieData) => t)
   console.log(dataArr)
   const movieElements = dataArr.map((movie: any, index: number) => (
     <div key={index}>
       <h3>{movie.title}</h3>
     </div>
-  ));
-  return (
-    <div>{movieElements}</div>
-  )
+  ))
+  return <div>{movieElements}</div>
 }
 
 export default GraphMovies
