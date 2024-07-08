@@ -1,29 +1,30 @@
 import React from 'react'
 import { getClient } from '@/app/lib/client'
 import { useQuery, gql } from '@apollo/client'
+import { Movie, Actor } from '@/codegen/generations/core/graphql'
+import { Get_Actors_NameDocument } from '@/codegen/generations/core/graphql'
+import { Get_Actors_NameQuery } from '@/codegen/generations/core/graphql'
 
-const query = gql`
-  query ExampleQuery {
-    movies {
-      title
-    }
-  }
-`
 type movieData = {
   title: string
 }
 const GraphMovies = async () => {
   const client = getClient()
-  console.log('client', client)
-  const { data } = await client.query({
-    query: query,
+  // console.log('client', client)
+  const { data } = await client.query<Get_Actors_NameQuery>({
+    query: Get_Actors_NameDocument,
   })
-  console.log('Data', data)
-  const dataArr = data.movies.map((t: movieData) => t)
-  console.log(dataArr)
-  const movieElements = dataArr.map((movie: any, index: number) => (
+  console.log('Data', data.movies)
+  const dataArr = data.movies.map((t) => t)
+  console.log('Destructured data object', ...dataArr)
+  const movieElements = dataArr.map((movie, index: number) => (
     <div key={index}>
-      <h3>{movie.title}</h3>
+      <h2>{movie.title}</h2>
+      <ul>
+        {movie.actors?.map((a, i) => {
+          return <li key="i">{a.name}</li>
+        })}
+      </ul>
     </div>
   ))
   return <div>{movieElements}</div>

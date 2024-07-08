@@ -35,6 +35,7 @@ const initServer = async () => {
  */
 const server = new ApolloServer({
   schema: await initServer(),
+  
 })
 
 /**

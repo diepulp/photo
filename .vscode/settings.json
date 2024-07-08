@@ -1,0 +1,9 @@
+{
+  "eslint.validate": ["true"],
+  "eslint.workingDirectories": [{ "mode": "auto" }],
+  "editor.hover.enabled": true,
+  "workbench.colorCustomizations": {
+    "editorWarning.foreground": "#ffcc00",
+    "editorWarning.border": "#ffcc00"
+  }
+}

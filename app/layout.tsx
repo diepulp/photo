@@ -2,7 +2,9 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import NavLinks from './components/NavLinks'
-import { ApolloWrapper } from './ApolloWrapper'
+import { ApolloWrapper } from './contexts/ApolloWrapper'
+import { Providers } from './contexts/providers'
+import { NextUIProvider } from '@nextui-org/react'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -22,7 +24,9 @@ export default function RootLayout({
           <p>This is a global navbar</p>
           <NavLinks />
         </nav>
-        <ApolloWrapper>{children}</ApolloWrapper>
+        <ApolloWrapper>
+          <NextUIProvider>{children}</NextUIProvider>
+        </ApolloWrapper>
       </body>
     </html>
   )
