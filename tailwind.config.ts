@@ -15,7 +15,12 @@ const config: Config = {
       },
     },
   },
-  darkMode: "class",
+  variants: {
+    extend: {
+      filter: ['hover', 'focus'],
+    },
+  },
+  darkMode: 'class',
   plugins: [nextui()],
 }
 export default config

@@ -3,13 +3,27 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-  /* --nextui-background: #f7f2f2; */
+  --primary-background: #f5f0f0;
+  --accent-background: #090303;
+  --primary-paragraphs: #3a3a3a;
+  --accent-paragraphs: #3a3a3a;
+  --primary-headings: #2d2d2d;
+  --accent-headings: #2d2d2d;
+  --primary-details: #2d2d2d;
+  --accent-details: #2d2d2d;
 }
 
-@media (prefers-color-scheme: dark) {
+body {
+  background-color: var(--primary-background);
+}
+
+@media (min-width: 500px) {
+  .box {
+    background: red;
+  }
+}
+/* 
+@media (prefers-color-scheme: feSpotLight) {
   :root {
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
@@ -17,17 +31,14 @@
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
-}
+
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
-}
+} */
 
-#__next {
+/* #__next {
   height: 100%;
-}
+} */
