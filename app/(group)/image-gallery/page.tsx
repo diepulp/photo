@@ -4,12 +4,12 @@ import Image from 'next/image'
 export default function ImageGallery() {
   return (
     <>
-      <div className="flex flex-wrap justify-center ">
+      <div className="flex flex-wrap items-center  ">
         <button className="transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 ...">
           Save Changes
         </button>
 
-        <Image src="/gc.jpg" alt="me-pic" width={300} height={300} className="filter grayscale " />
+        <Image src="/gc.jpg" alt="me-pic" width={300} height={300} className="filter grayscale object-contain " />
 
         <div className="p-1 m-1 w-full sm:w-1/2 md:w-1/3 lg:w-1/6">
           <Image
@@ -26,7 +26,7 @@ export default function ImageGallery() {
             alt="me-pic"
             width={300}
             height={300}
-            className="object-cover w-full h-auto transition ease-in-out delay-150 duration-700 group-hover:grayscale hover:-translate-y-1 group-hover:scale-110"
+            className="object-contain w-full h-auto transition ease-in-out delay-150 duration-700 group-hover:grayscale hover:-translate-y-1 group-hover:scale-110"
           />
         </div>
         <div className="p-1 m-1 w-full sm:w-1/2 md:w-1/3 lg:w-1/8">
