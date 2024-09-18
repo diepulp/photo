@@ -30,11 +30,12 @@ export default function GlobalNavBar() {
 
   const isActive = (path: string) => activePath === path
 
-  console.log('Router Pathname', pathName)
+  // console.log('Router Pathname', pathName)
 
   const menuItems = ['Home', 'Portfolio', 'About', 'Investment', 'Contact', 'Graduates', 'Wedding Packages', 'Log Out']
   return (
     <Navbar
+      className="border bg-[rgb(36,36,36)] text-white"
       onMenuOpenChange={setIsMenuOpen}
       classNames={{
         item: [

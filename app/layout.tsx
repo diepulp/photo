@@ -5,12 +5,12 @@ import { Playfair_Display } from 'next/font/google'
 import {} from 'next/font/google'
 import './globals.css'
 import Image from 'next/image'
-import NavLinks from './components/NavLinks'
+import NavLinks from '../components/NavLinks'
 
-import { Providers } from './contexts/providers'
+import { Providers } from '../contexts/providers'
 import { NextUIProvider } from '@nextui-org/react'
-import GlobalNavBar from './components/GlobalNavBar'
-import Header from './components/Header'
+import GlobalNavBar from '../components/GlobalNavBar'
+import Header from '../components/Header'
 const inter = Inter({ subsets: ['latin'] })
 const playfair = Playfair_Display({
   subsets: ['latin'],

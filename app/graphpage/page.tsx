@@ -1,5 +1,5 @@
 import React from 'react'
-import { getClient } from '@/app/lib/client'
+import { getClient } from '@/lib/client'
 import { useQuery, gql } from '@apollo/client'
 import { Movie, Actor } from '@/codegen/generations/core/graphql'
 import { Get_Actors_NameDocument } from '@/codegen/generations/core/graphql'

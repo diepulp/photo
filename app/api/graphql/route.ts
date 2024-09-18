@@ -5,15 +5,13 @@ import { NextRequest } from 'next/server'
 import neo4j from 'neo4j-driver'
 import { Neo4jGraphQL } from '@neo4j/graphql'
 import { createYoga } from 'graphql-yoga'
-import { typeDefs } from '@/app/graphql/schema'
+import { typeDefs } from '@/graphql/schema'
 
 // Neo4j driver
 const driver = neo4j.driver(
   process.env.NEO4J_URI as string,
   neo4j.auth.basic(process.env.NEO4J_USER as string, process.env.NEO4J_PASSWORD as string),
 )
-
-
 
 const resolvers = {
   Query: {
@@ -35,7 +33,6 @@ const initServer = async () => {
  */
 const server = new ApolloServer({
   schema: await initServer(),
-  
 })
 
 /**

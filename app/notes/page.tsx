@@ -24,7 +24,7 @@ import { useQuery, gql } from '@apollo/client'
 import { graphql } from '@/codegen/generations/core/gql'
 import { Movie } from '@/codegen/generations/core/graphql'
 // import { Get_Actors_NameQuery } from '@/codegen/generations/core/graphql'
-import { MoviesQuery } from '@/app/graphql/queries'
+import { MoviesQuery } from '@/graphql/queries'
 import { useState } from 'react'
 
 interface MyDatePickerProps<T extends DateValue> extends DatePickerProps<T> {}
