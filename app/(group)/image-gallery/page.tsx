@@ -9,8 +9,6 @@ export default function ImageGallery() {
           Save Changes
         </button>
 
-        <Image src="/gc.jpg" alt="me-pic" width={300} height={300} className="filter grayscale object-contain " />
-
         <div className="p-1 m-1 w-full sm:w-1/2 md:w-1/3 lg:w-1/6">
           <Image
             src="/me-ying-yang.jpg"
@@ -20,22 +18,14 @@ export default function ImageGallery() {
             className="transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-150  hover:bg-indigo-500 duration-300 ..."
           />
         </div>
-        <div className="group p-1 m-1 w-full sm:w-1/2 md:w-1/3 lg:w-1/8">
-          <Image
-            src="/gc.jpg"
-            alt="me-pic"
-            width={300}
-            height={300}
-            className="object-contain w-full h-auto transition ease-in-out delay-150 duration-700 group-hover:grayscale hover:-translate-y-1 group-hover:scale-110"
-          />
-        </div>
+
         <div className="p-1 m-1 w-full sm:w-1/2 md:w-1/3 lg:w-1/8">
           <Image
             src="/me-ying-yang.jpg"
             alt="me-pic"
             width={300}
             height={300}
-            className="object-cover w-full h-auto transition ease-in-out delay-150 duration-700 group-hover:opacity-50 group-hover:-translate-y-1 group-hover:scale-110"
+            className="object-cover w-full  npx @next/codemod next-image-to-legacy-image . h-auto transition ease-in-out delay-150 duration-700 group-hover:opacity-50 group-hover:-translate-y-1 group-hover:scale-110"
           />
         </div>
         <div className="group filter group-hover:grayscale-0 p-1 m-1 w-full sm:w-1/2 md:w-1/3 lg:w-1/4">

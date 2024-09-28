@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { config } from 'dotenv'
-
+import Sidebar from '@/components/ui/Sidebar'
 
 export default function Home() {
   return (

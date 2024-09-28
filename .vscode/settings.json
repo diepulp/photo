@@ -2,8 +2,38 @@
   "eslint.validate": ["true"],
   "eslint.workingDirectories": [{ "mode": "auto" }],
   "editor.hover.enabled": true,
+
+  "typescript.reportStyleChecksAsWarnings": false, // For TypeScript
+  "typescript.reportUnusedVariables": "none", // Or "none"
+  "javascript.reportUnusedVariables": "none", // Or "none"
+  "eslint.rules.customizations": [
+    {
+      "rule": "no-unused-vars",
+      "severity": "off" // Adjust or turn off for ESLint
+    }
+  ],
   "workbench.colorCustomizations": {
-    "editorWarning.foreground": "#ffcc00",
-    "editorWarning.border": "#ffcc00"
+    "editorError.foreground": "#00000012"
+    // "editorInfo.foreground": "#ffcc00",
+    // "editorWarning.foreground": "#ffcc00",
+
+    // "editorWarning.border": "#ffcc00"
+  },
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "never"
+  },
+  "editor.semanticHighlighting.enabled": true,
+  "typescript.showUnused": true,
+  "javascript.showUnused": true,
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": "entity.name.variable.unused",
+        "settings": {
+          "foreground": "#808080", // Adjust to your desired grey color
+          "fontStyle": "italic"
+        }
+      }
+    ]
   }
 }

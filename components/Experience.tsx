@@ -17,7 +17,7 @@ function Experience({}: Props) {
       }}
       className="h-screen flex relative flex-col text-left md:flex-row max-w-full mx-auto items-center overflow-auto "
     >
-      <h3 className="absolute items-center text-center text-sm sm:text-2xl top-24 tracking-[0.5rem] uppercase sm:tracking-[20px] text-gray-500 mb-5">
+      <h3 className="absolute left-0 right-0 mx-auto w-fit text-center text-sm sm:text-2xl top-24 tracking-[0.5rem] uppercase sm:tracking-[20px] text-gray-500 mb-5">
         Experience
       </h3>
       <div className="h-screen mt-72 scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#f7ab0a] flex space-x-5 overflow-x-scroll scroll-smooth p-10 snap-x snap-mandatory">

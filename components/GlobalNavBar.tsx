@@ -55,13 +55,13 @@ export default function GlobalNavBar() {
       }}
     >
       <NavbarContent>
-        <NavbarMenuToggle aria-label={isMenuOpen ? 'Close menu' : 'Open menu'} className="sm:hidden" />
+        <NavbarMenuToggle aria-label={isMenuOpen ? 'Close menu' : 'Open menu'} className="md:hidden" />
         <NavbarBrand>
-          <p className="font-semibold text-inherit">Anastasiya Ivanova Photography</p>
+          <p className="  text-inherit">Anastasiya Ivanova Photography</p>
         </NavbarBrand>
       </NavbarContent>
 
-      <NavbarContent className="hidden sm:flex gap-4" justify="center">
+      <NavbarContent className=" sm:flex gap-4 items-center flex" justify="center">
         <NavbarItem
           className={`px-4 py-2 ${isActive('/image-gallery') ? 'text-red-500' : 'text-black'} hover:text-red-500`}
           isActive={isActive('/image-gallery')}
@@ -90,12 +90,13 @@ export default function GlobalNavBar() {
           <SocialIcon fgColor="grey" bgColor="transparent" url="www.vimeo.com" />
         </NavbarItem>
       </NavbarContent>
-      <NavbarMenu>
+      <p>Menu</p>
+      <NavbarMenu className="flex flex-col items-center text-left justify-center">
         {menuItems.map((item, index) => (
-          <NavbarMenuItem key={`${item}-${index}`}>
+          <NavbarMenuItem key={`${item}-${index}`} className=" tracking-[0.25rem]">
             <Link
               color={index === 2 ? 'primary' : index === menuItems.length - 1 ? 'danger' : 'foreground'}
-              className="w-full"
+              className="w-full text-2xl"
               href="#"
               size="lg"
             >
