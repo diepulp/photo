@@ -16,238 +16,6 @@ export type Scalars = {
   Float: { input: number; output: number; }
 };
 
-export type Actor = {
-  __typename?: 'Actor';
-  movies: Array<Movie>;
-  moviesAggregate?: Maybe<ActorMovieMoviesAggregationSelection>;
-  moviesConnection: ActorMoviesConnection;
-  name?: Maybe<Scalars['String']['output']>;
-};
-
-
-export type ActorMoviesArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
-  options?: InputMaybe<MovieOptions>;
-  where?: InputMaybe<MovieWhere>;
-};
-
-
-export type ActorMoviesAggregateArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
-  where?: InputMaybe<MovieWhere>;
-};
-
-
-export type ActorMoviesConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  sort?: InputMaybe<Array<ActorMoviesConnectionSort>>;
-  where?: InputMaybe<ActorMoviesConnectionWhere>;
-};
-
-export type ActorAggregateSelection = {
-  __typename?: 'ActorAggregateSelection';
-  count: Scalars['Int']['output'];
-  name: StringAggregateSelection;
-};
-
-export type ActorConnectInput = {
-  movies?: InputMaybe<Array<ActorMoviesConnectFieldInput>>;
-};
-
-export type ActorConnectWhere = {
-  node: ActorWhere;
-};
-
-export type ActorCreateInput = {
-  movies?: InputMaybe<ActorMoviesFieldInput>;
-  name?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type ActorDeleteInput = {
-  movies?: InputMaybe<Array<ActorMoviesDeleteFieldInput>>;
-};
-
-export type ActorDisconnectInput = {
-  movies?: InputMaybe<Array<ActorMoviesDisconnectFieldInput>>;
-};
-
-export type ActorEdge = {
-  __typename?: 'ActorEdge';
-  cursor: Scalars['String']['output'];
-  node: Actor;
-};
-
-export type ActorMovieMoviesAggregationSelection = {
-  __typename?: 'ActorMovieMoviesAggregationSelection';
-  count: Scalars['Int']['output'];
-  node?: Maybe<ActorMovieMoviesNodeAggregateSelection>;
-};
-
-export type ActorMovieMoviesNodeAggregateSelection = {
-  __typename?: 'ActorMovieMoviesNodeAggregateSelection';
-  title: StringAggregateSelection;
-};
-
-export type ActorMoviesAggregateInput = {
-  AND?: InputMaybe<Array<ActorMoviesAggregateInput>>;
-  NOT?: InputMaybe<ActorMoviesAggregateInput>;
-  OR?: InputMaybe<Array<ActorMoviesAggregateInput>>;
-  count?: InputMaybe<Scalars['Int']['input']>;
-  count_GT?: InputMaybe<Scalars['Int']['input']>;
-  count_GTE?: InputMaybe<Scalars['Int']['input']>;
-  count_LT?: InputMaybe<Scalars['Int']['input']>;
-  count_LTE?: InputMaybe<Scalars['Int']['input']>;
-  node?: InputMaybe<ActorMoviesNodeAggregationWhereInput>;
-};
-
-export type ActorMoviesConnectFieldInput = {
-  connect?: InputMaybe<Array<MovieConnectInput>>;
-  /** Whether or not to overwrite any matching relationship with the new properties. */
-  overwrite?: Scalars['Boolean']['input'];
-  where?: InputMaybe<MovieConnectWhere>;
-};
-
-export type ActorMoviesConnection = {
-  __typename?: 'ActorMoviesConnection';
-  edges: Array<ActorMoviesRelationship>;
-  pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
-};
-
-export type ActorMoviesConnectionSort = {
-  node?: InputMaybe<MovieSort>;
-};
-
-export type ActorMoviesConnectionWhere = {
-  AND?: InputMaybe<Array<ActorMoviesConnectionWhere>>;
-  NOT?: InputMaybe<ActorMoviesConnectionWhere>;
-  OR?: InputMaybe<Array<ActorMoviesConnectionWhere>>;
-  node?: InputMaybe<MovieWhere>;
-};
-
-export type ActorMoviesCreateFieldInput = {
-  node: MovieCreateInput;
-};
-
-export type ActorMoviesDeleteFieldInput = {
-  delete?: InputMaybe<MovieDeleteInput>;
-  where?: InputMaybe<ActorMoviesConnectionWhere>;
-};
-
-export type ActorMoviesDisconnectFieldInput = {
-  disconnect?: InputMaybe<MovieDisconnectInput>;
-  where?: InputMaybe<ActorMoviesConnectionWhere>;
-};
-
-export type ActorMoviesFieldInput = {
-  connect?: InputMaybe<Array<ActorMoviesConnectFieldInput>>;
-  create?: InputMaybe<Array<ActorMoviesCreateFieldInput>>;
-};
-
-export type ActorMoviesNodeAggregationWhereInput = {
-  AND?: InputMaybe<Array<ActorMoviesNodeAggregationWhereInput>>;
-  NOT?: InputMaybe<ActorMoviesNodeAggregationWhereInput>;
-  OR?: InputMaybe<Array<ActorMoviesNodeAggregationWhereInput>>;
-  title_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  title_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  title_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  title_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  title_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  title_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  title_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  title_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  title_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  title_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-};
-
-export type ActorMoviesRelationship = {
-  __typename?: 'ActorMoviesRelationship';
-  cursor: Scalars['String']['output'];
-  node: Movie;
-};
-
-export type ActorMoviesUpdateConnectionInput = {
-  node?: InputMaybe<MovieUpdateInput>;
-};
-
-export type ActorMoviesUpdateFieldInput = {
-  connect?: InputMaybe<Array<ActorMoviesConnectFieldInput>>;
-  create?: InputMaybe<Array<ActorMoviesCreateFieldInput>>;
-  delete?: InputMaybe<Array<ActorMoviesDeleteFieldInput>>;
-  disconnect?: InputMaybe<Array<ActorMoviesDisconnectFieldInput>>;
-  update?: InputMaybe<ActorMoviesUpdateConnectionInput>;
-  where?: InputMaybe<ActorMoviesConnectionWhere>;
-};
-
-export type ActorOptions = {
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
-  /** Specify one or more ActorSort objects to sort Actors by. The sorts will be applied in the order in which they are arranged in the array. */
-  sort?: InputMaybe<Array<ActorSort>>;
-};
-
-export type ActorRelationInput = {
-  movies?: InputMaybe<Array<ActorMoviesCreateFieldInput>>;
-};
-
-/** Fields to sort Actors by. The order in which sorts are applied is not guaranteed when specifying many fields in one ActorSort object. */
-export type ActorSort = {
-  name?: InputMaybe<SortDirection>;
-};
-
-export type ActorUpdateInput = {
-  movies?: InputMaybe<Array<ActorMoviesUpdateFieldInput>>;
-  name?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type ActorWhere = {
-  AND?: InputMaybe<Array<ActorWhere>>;
-  NOT?: InputMaybe<ActorWhere>;
-  OR?: InputMaybe<Array<ActorWhere>>;
-  moviesAggregate?: InputMaybe<ActorMoviesAggregateInput>;
-  /** Return Actors where all of the related ActorMoviesConnections match this filter */
-  moviesConnection_ALL?: InputMaybe<ActorMoviesConnectionWhere>;
-  /** Return Actors where none of the related ActorMoviesConnections match this filter */
-  moviesConnection_NONE?: InputMaybe<ActorMoviesConnectionWhere>;
-  /** Return Actors where one of the related ActorMoviesConnections match this filter */
-  moviesConnection_SINGLE?: InputMaybe<ActorMoviesConnectionWhere>;
-  /** Return Actors where some of the related ActorMoviesConnections match this filter */
-  moviesConnection_SOME?: InputMaybe<ActorMoviesConnectionWhere>;
-  /** Return Actors where all of the related Movies match this filter */
-  movies_ALL?: InputMaybe<MovieWhere>;
-  /** Return Actors where none of the related Movies match this filter */
-  movies_NONE?: InputMaybe<MovieWhere>;
-  /** Return Actors where one of the related Movies match this filter */
-  movies_SINGLE?: InputMaybe<MovieWhere>;
-  /** Return Actors where some of the related Movies match this filter */
-  movies_SOME?: InputMaybe<MovieWhere>;
-  name?: InputMaybe<Scalars['String']['input']>;
-  name_CONTAINS?: InputMaybe<Scalars['String']['input']>;
-  name_ENDS_WITH?: InputMaybe<Scalars['String']['input']>;
-  name_IN?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  name_STARTS_WITH?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type ActorsConnection = {
-  __typename?: 'ActorsConnection';
-  edges: Array<ActorEdge>;
-  pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
-};
-
-export type CreateActorsMutationResponse = {
-  __typename?: 'CreateActorsMutationResponse';
-  actors: Array<Actor>;
-  info: CreateInfo;
-};
-
 /** Information about the number of nodes and relationships created during a create mutation */
 export type CreateInfo = {
   __typename?: 'CreateInfo';
@@ -257,10 +25,16 @@ export type CreateInfo = {
   relationshipsCreated: Scalars['Int']['output'];
 };
 
-export type CreateMoviesMutationResponse = {
-  __typename?: 'CreateMoviesMutationResponse';
+export type CreateOrdersMutationResponse = {
+  __typename?: 'CreateOrdersMutationResponse';
   info: CreateInfo;
-  movies: Array<Movie>;
+  orders: Array<Order>;
+};
+
+export type CreateUsersMutationResponse = {
+  __typename?: 'CreateUsersMutationResponse';
+  info: CreateInfo;
+  users: Array<User>;
 };
 
 /** Information about the number of nodes and relationships deleted during a delete mutation */
@@ -272,282 +46,298 @@ export type DeleteInfo = {
   relationshipsDeleted: Scalars['Int']['output'];
 };
 
-export type Movie = {
-  __typename?: 'Movie';
-  actors: Array<Actor>;
-  actorsAggregate?: Maybe<MovieActorActorsAggregationSelection>;
-  actorsConnection: MovieActorsConnection;
-  title?: Maybe<Scalars['String']['output']>;
+export type Mutation = {
+  __typename?: 'Mutation';
+  createOrders: CreateOrdersMutationResponse;
+  createUsers: CreateUsersMutationResponse;
+  deleteOrders: DeleteInfo;
+  deleteUsers: DeleteInfo;
+  updateOrders: UpdateOrdersMutationResponse;
+  updateUsers: UpdateUsersMutationResponse;
 };
 
 
-export type MovieActorsArgs = {
+export type MutationCreateOrdersArgs = {
+  input: Array<OrderCreateInput>;
+};
+
+
+export type MutationCreateUsersArgs = {
+  input: Array<UserCreateInput>;
+};
+
+
+export type MutationDeleteOrdersArgs = {
+  delete?: InputMaybe<OrderDeleteInput>;
+  where?: InputMaybe<OrderWhere>;
+};
+
+
+export type MutationDeleteUsersArgs = {
+  delete?: InputMaybe<UserDeleteInput>;
+  where?: InputMaybe<UserWhere>;
+};
+
+
+export type MutationUpdateOrdersArgs = {
+  connect?: InputMaybe<OrderConnectInput>;
+  create?: InputMaybe<OrderRelationInput>;
+  delete?: InputMaybe<OrderDeleteInput>;
+  disconnect?: InputMaybe<OrderDisconnectInput>;
+  update?: InputMaybe<OrderUpdateInput>;
+  where?: InputMaybe<OrderWhere>;
+};
+
+
+export type MutationUpdateUsersArgs = {
+  connect?: InputMaybe<UserConnectInput>;
+  create?: InputMaybe<UserRelationInput>;
+  delete?: InputMaybe<UserDeleteInput>;
+  disconnect?: InputMaybe<UserDisconnectInput>;
+  update?: InputMaybe<UserUpdateInput>;
+  where?: InputMaybe<UserWhere>;
+};
+
+export type Order = {
+  __typename?: 'Order';
+  orderType: Scalars['String']['output'];
+  users: Array<User>;
+  usersAggregate?: Maybe<OrderUserUsersAggregationSelection>;
+  usersConnection: OrderUsersConnection;
+};
+
+
+export type OrderUsersArgs = {
   directed?: InputMaybe<Scalars['Boolean']['input']>;
-  options?: InputMaybe<ActorOptions>;
-  where?: InputMaybe<ActorWhere>;
+  options?: InputMaybe<UserOptions>;
+  where?: InputMaybe<UserWhere>;
 };
 
 
-export type MovieActorsAggregateArgs = {
+export type OrderUsersAggregateArgs = {
   directed?: InputMaybe<Scalars['Boolean']['input']>;
-  where?: InputMaybe<ActorWhere>;
+  where?: InputMaybe<UserWhere>;
 };
 
 
-export type MovieActorsConnectionArgs = {
+export type OrderUsersConnectionArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   directed?: InputMaybe<Scalars['Boolean']['input']>;
   first?: InputMaybe<Scalars['Int']['input']>;
-  sort?: InputMaybe<Array<MovieActorsConnectionSort>>;
-  where?: InputMaybe<MovieActorsConnectionWhere>;
+  sort?: InputMaybe<Array<OrderUsersConnectionSort>>;
+  where?: InputMaybe<OrderUsersConnectionWhere>;
 };
 
-export type MovieActorActorsAggregationSelection = {
-  __typename?: 'MovieActorActorsAggregationSelection';
+export type OrderAggregateSelection = {
+  __typename?: 'OrderAggregateSelection';
   count: Scalars['Int']['output'];
-  node?: Maybe<MovieActorActorsNodeAggregateSelection>;
+  orderType: StringAggregateSelection;
 };
 
-export type MovieActorActorsNodeAggregateSelection = {
-  __typename?: 'MovieActorActorsNodeAggregateSelection';
-  name: StringAggregateSelection;
+export type OrderConnectInput = {
+  users?: InputMaybe<Array<OrderUsersConnectFieldInput>>;
 };
 
-export type MovieActorsAggregateInput = {
-  AND?: InputMaybe<Array<MovieActorsAggregateInput>>;
-  NOT?: InputMaybe<MovieActorsAggregateInput>;
-  OR?: InputMaybe<Array<MovieActorsAggregateInput>>;
+export type OrderConnectWhere = {
+  node: OrderWhere;
+};
+
+export type OrderCreateInput = {
+  orderType: Scalars['String']['input'];
+  users?: InputMaybe<OrderUsersFieldInput>;
+};
+
+export type OrderDeleteInput = {
+  users?: InputMaybe<Array<OrderUsersDeleteFieldInput>>;
+};
+
+export type OrderDisconnectInput = {
+  users?: InputMaybe<Array<OrderUsersDisconnectFieldInput>>;
+};
+
+export type OrderEdge = {
+  __typename?: 'OrderEdge';
+  cursor: Scalars['String']['output'];
+  node: Order;
+};
+
+export type OrderOptions = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  /** Specify one or more OrderSort objects to sort Orders by. The sorts will be applied in the order in which they are arranged in the array. */
+  sort?: InputMaybe<Array<OrderSort>>;
+};
+
+export type OrderRelationInput = {
+  users?: InputMaybe<Array<OrderUsersCreateFieldInput>>;
+};
+
+/** Fields to sort Orders by. The order in which sorts are applied is not guaranteed when specifying many fields in one OrderSort object. */
+export type OrderSort = {
+  orderType?: InputMaybe<SortDirection>;
+};
+
+export type OrderUpdateInput = {
+  orderType?: InputMaybe<Scalars['String']['input']>;
+  users?: InputMaybe<Array<OrderUsersUpdateFieldInput>>;
+};
+
+export type OrderUserUsersAggregationSelection = {
+  __typename?: 'OrderUserUsersAggregationSelection';
+  count: Scalars['Int']['output'];
+  node?: Maybe<OrderUserUsersNodeAggregateSelection>;
+};
+
+export type OrderUserUsersNodeAggregateSelection = {
+  __typename?: 'OrderUserUsersNodeAggregateSelection';
+  firstName: StringAggregateSelection;
+  lastName: StringAggregateSelection;
+};
+
+export type OrderUsersAggregateInput = {
+  AND?: InputMaybe<Array<OrderUsersAggregateInput>>;
+  NOT?: InputMaybe<OrderUsersAggregateInput>;
+  OR?: InputMaybe<Array<OrderUsersAggregateInput>>;
   count?: InputMaybe<Scalars['Int']['input']>;
   count_GT?: InputMaybe<Scalars['Int']['input']>;
   count_GTE?: InputMaybe<Scalars['Int']['input']>;
   count_LT?: InputMaybe<Scalars['Int']['input']>;
   count_LTE?: InputMaybe<Scalars['Int']['input']>;
-  node?: InputMaybe<MovieActorsNodeAggregationWhereInput>;
+  node?: InputMaybe<OrderUsersNodeAggregationWhereInput>;
 };
 
-export type MovieActorsConnectFieldInput = {
-  connect?: InputMaybe<Array<ActorConnectInput>>;
+export type OrderUsersConnectFieldInput = {
+  connect?: InputMaybe<Array<UserConnectInput>>;
   /** Whether or not to overwrite any matching relationship with the new properties. */
   overwrite?: Scalars['Boolean']['input'];
-  where?: InputMaybe<ActorConnectWhere>;
+  where?: InputMaybe<UserConnectWhere>;
 };
 
-export type MovieActorsConnection = {
-  __typename?: 'MovieActorsConnection';
-  edges: Array<MovieActorsRelationship>;
+export type OrderUsersConnection = {
+  __typename?: 'OrderUsersConnection';
+  edges: Array<OrderUsersRelationship>;
   pageInfo: PageInfo;
   totalCount: Scalars['Int']['output'];
 };
 
-export type MovieActorsConnectionSort = {
-  node?: InputMaybe<ActorSort>;
+export type OrderUsersConnectionSort = {
+  node?: InputMaybe<UserSort>;
 };
 
-export type MovieActorsConnectionWhere = {
-  AND?: InputMaybe<Array<MovieActorsConnectionWhere>>;
-  NOT?: InputMaybe<MovieActorsConnectionWhere>;
-  OR?: InputMaybe<Array<MovieActorsConnectionWhere>>;
-  node?: InputMaybe<ActorWhere>;
+export type OrderUsersConnectionWhere = {
+  AND?: InputMaybe<Array<OrderUsersConnectionWhere>>;
+  NOT?: InputMaybe<OrderUsersConnectionWhere>;
+  OR?: InputMaybe<Array<OrderUsersConnectionWhere>>;
+  node?: InputMaybe<UserWhere>;
 };
 
-export type MovieActorsCreateFieldInput = {
-  node: ActorCreateInput;
+export type OrderUsersCreateFieldInput = {
+  node: UserCreateInput;
 };
 
-export type MovieActorsDeleteFieldInput = {
-  delete?: InputMaybe<ActorDeleteInput>;
-  where?: InputMaybe<MovieActorsConnectionWhere>;
+export type OrderUsersDeleteFieldInput = {
+  delete?: InputMaybe<UserDeleteInput>;
+  where?: InputMaybe<OrderUsersConnectionWhere>;
 };
 
-export type MovieActorsDisconnectFieldInput = {
-  disconnect?: InputMaybe<ActorDisconnectInput>;
-  where?: InputMaybe<MovieActorsConnectionWhere>;
+export type OrderUsersDisconnectFieldInput = {
+  disconnect?: InputMaybe<UserDisconnectInput>;
+  where?: InputMaybe<OrderUsersConnectionWhere>;
 };
 
-export type MovieActorsFieldInput = {
-  connect?: InputMaybe<Array<MovieActorsConnectFieldInput>>;
-  create?: InputMaybe<Array<MovieActorsCreateFieldInput>>;
+export type OrderUsersFieldInput = {
+  connect?: InputMaybe<Array<OrderUsersConnectFieldInput>>;
+  create?: InputMaybe<Array<OrderUsersCreateFieldInput>>;
 };
 
-export type MovieActorsNodeAggregationWhereInput = {
-  AND?: InputMaybe<Array<MovieActorsNodeAggregationWhereInput>>;
-  NOT?: InputMaybe<MovieActorsNodeAggregationWhereInput>;
-  OR?: InputMaybe<Array<MovieActorsNodeAggregationWhereInput>>;
-  name_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  name_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  name_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  name_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  name_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  name_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  name_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  name_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  name_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  name_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+export type OrderUsersNodeAggregationWhereInput = {
+  AND?: InputMaybe<Array<OrderUsersNodeAggregationWhereInput>>;
+  NOT?: InputMaybe<OrderUsersNodeAggregationWhereInput>;
+  OR?: InputMaybe<Array<OrderUsersNodeAggregationWhereInput>>;
+  firstName_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
+  firstName_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
+  firstName_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
+  firstName_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
+  firstName_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
+  firstName_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  firstName_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
+  firstName_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
+  firstName_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
+  firstName_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  firstName_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  firstName_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
+  firstName_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
+  firstName_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
+  firstName_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  lastName_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
+  lastName_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
+  lastName_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
+  lastName_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
+  lastName_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
+  lastName_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  lastName_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
+  lastName_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
+  lastName_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
+  lastName_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  lastName_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  lastName_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
+  lastName_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
+  lastName_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
+  lastName_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
 };
 
-export type MovieActorsRelationship = {
-  __typename?: 'MovieActorsRelationship';
+export type OrderUsersRelationship = {
+  __typename?: 'OrderUsersRelationship';
   cursor: Scalars['String']['output'];
-  node: Actor;
+  node: User;
 };
 
-export type MovieActorsUpdateConnectionInput = {
-  node?: InputMaybe<ActorUpdateInput>;
+export type OrderUsersUpdateConnectionInput = {
+  node?: InputMaybe<UserUpdateInput>;
 };
 
-export type MovieActorsUpdateFieldInput = {
-  connect?: InputMaybe<Array<MovieActorsConnectFieldInput>>;
-  create?: InputMaybe<Array<MovieActorsCreateFieldInput>>;
-  delete?: InputMaybe<Array<MovieActorsDeleteFieldInput>>;
-  disconnect?: InputMaybe<Array<MovieActorsDisconnectFieldInput>>;
-  update?: InputMaybe<MovieActorsUpdateConnectionInput>;
-  where?: InputMaybe<MovieActorsConnectionWhere>;
+export type OrderUsersUpdateFieldInput = {
+  connect?: InputMaybe<Array<OrderUsersConnectFieldInput>>;
+  create?: InputMaybe<Array<OrderUsersCreateFieldInput>>;
+  delete?: InputMaybe<Array<OrderUsersDeleteFieldInput>>;
+  disconnect?: InputMaybe<Array<OrderUsersDisconnectFieldInput>>;
+  update?: InputMaybe<OrderUsersUpdateConnectionInput>;
+  where?: InputMaybe<OrderUsersConnectionWhere>;
 };
 
-export type MovieAggregateSelection = {
-  __typename?: 'MovieAggregateSelection';
-  count: Scalars['Int']['output'];
-  title: StringAggregateSelection;
+export type OrderWhere = {
+  AND?: InputMaybe<Array<OrderWhere>>;
+  NOT?: InputMaybe<OrderWhere>;
+  OR?: InputMaybe<Array<OrderWhere>>;
+  orderType?: InputMaybe<Scalars['String']['input']>;
+  orderType_CONTAINS?: InputMaybe<Scalars['String']['input']>;
+  orderType_ENDS_WITH?: InputMaybe<Scalars['String']['input']>;
+  orderType_IN?: InputMaybe<Array<Scalars['String']['input']>>;
+  orderType_STARTS_WITH?: InputMaybe<Scalars['String']['input']>;
+  usersAggregate?: InputMaybe<OrderUsersAggregateInput>;
+  /** Return Orders where all of the related OrderUsersConnections match this filter */
+  usersConnection_ALL?: InputMaybe<OrderUsersConnectionWhere>;
+  /** Return Orders where none of the related OrderUsersConnections match this filter */
+  usersConnection_NONE?: InputMaybe<OrderUsersConnectionWhere>;
+  /** Return Orders where one of the related OrderUsersConnections match this filter */
+  usersConnection_SINGLE?: InputMaybe<OrderUsersConnectionWhere>;
+  /** Return Orders where some of the related OrderUsersConnections match this filter */
+  usersConnection_SOME?: InputMaybe<OrderUsersConnectionWhere>;
+  /** Return Orders where all of the related Users match this filter */
+  users_ALL?: InputMaybe<UserWhere>;
+  /** Return Orders where none of the related Users match this filter */
+  users_NONE?: InputMaybe<UserWhere>;
+  /** Return Orders where one of the related Users match this filter */
+  users_SINGLE?: InputMaybe<UserWhere>;
+  /** Return Orders where some of the related Users match this filter */
+  users_SOME?: InputMaybe<UserWhere>;
 };
 
-export type MovieConnectInput = {
-  actors?: InputMaybe<Array<MovieActorsConnectFieldInput>>;
-};
-
-export type MovieConnectWhere = {
-  node: MovieWhere;
-};
-
-export type MovieCreateInput = {
-  actors?: InputMaybe<MovieActorsFieldInput>;
-  title?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type MovieDeleteInput = {
-  actors?: InputMaybe<Array<MovieActorsDeleteFieldInput>>;
-};
-
-export type MovieDisconnectInput = {
-  actors?: InputMaybe<Array<MovieActorsDisconnectFieldInput>>;
-};
-
-export type MovieEdge = {
-  __typename?: 'MovieEdge';
-  cursor: Scalars['String']['output'];
-  node: Movie;
-};
-
-export type MovieOptions = {
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
-  /** Specify one or more MovieSort objects to sort Movies by. The sorts will be applied in the order in which they are arranged in the array. */
-  sort?: InputMaybe<Array<MovieSort>>;
-};
-
-export type MovieRelationInput = {
-  actors?: InputMaybe<Array<MovieActorsCreateFieldInput>>;
-};
-
-/** Fields to sort Movies by. The order in which sorts are applied is not guaranteed when specifying many fields in one MovieSort object. */
-export type MovieSort = {
-  title?: InputMaybe<SortDirection>;
-};
-
-export type MovieUpdateInput = {
-  actors?: InputMaybe<Array<MovieActorsUpdateFieldInput>>;
-  title?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type MovieWhere = {
-  AND?: InputMaybe<Array<MovieWhere>>;
-  NOT?: InputMaybe<MovieWhere>;
-  OR?: InputMaybe<Array<MovieWhere>>;
-  actorsAggregate?: InputMaybe<MovieActorsAggregateInput>;
-  /** Return Movies where all of the related MovieActorsConnections match this filter */
-  actorsConnection_ALL?: InputMaybe<MovieActorsConnectionWhere>;
-  /** Return Movies where none of the related MovieActorsConnections match this filter */
-  actorsConnection_NONE?: InputMaybe<MovieActorsConnectionWhere>;
-  /** Return Movies where one of the related MovieActorsConnections match this filter */
-  actorsConnection_SINGLE?: InputMaybe<MovieActorsConnectionWhere>;
-  /** Return Movies where some of the related MovieActorsConnections match this filter */
-  actorsConnection_SOME?: InputMaybe<MovieActorsConnectionWhere>;
-  /** Return Movies where all of the related Actors match this filter */
-  actors_ALL?: InputMaybe<ActorWhere>;
-  /** Return Movies where none of the related Actors match this filter */
-  actors_NONE?: InputMaybe<ActorWhere>;
-  /** Return Movies where one of the related Actors match this filter */
-  actors_SINGLE?: InputMaybe<ActorWhere>;
-  /** Return Movies where some of the related Actors match this filter */
-  actors_SOME?: InputMaybe<ActorWhere>;
-  title?: InputMaybe<Scalars['String']['input']>;
-  title_CONTAINS?: InputMaybe<Scalars['String']['input']>;
-  title_ENDS_WITH?: InputMaybe<Scalars['String']['input']>;
-  title_IN?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  title_STARTS_WITH?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type MoviesConnection = {
-  __typename?: 'MoviesConnection';
-  edges: Array<MovieEdge>;
+export type OrdersConnection = {
+  __typename?: 'OrdersConnection';
+  edges: Array<OrderEdge>;
   pageInfo: PageInfo;
   totalCount: Scalars['Int']['output'];
-};
-
-export type Mutation = {
-  __typename?: 'Mutation';
-  createActors: CreateActorsMutationResponse;
-  createMovies: CreateMoviesMutationResponse;
-  deleteActors: DeleteInfo;
-  deleteMovies: DeleteInfo;
-  updateActors: UpdateActorsMutationResponse;
-  updateMovies: UpdateMoviesMutationResponse;
-};
-
-
-export type MutationCreateActorsArgs = {
-  input: Array<ActorCreateInput>;
-};
-
-
-export type MutationCreateMoviesArgs = {
-  input: Array<MovieCreateInput>;
-};
-
-
-export type MutationDeleteActorsArgs = {
-  delete?: InputMaybe<ActorDeleteInput>;
-  where?: InputMaybe<ActorWhere>;
-};
-
-
-export type MutationDeleteMoviesArgs = {
-  delete?: InputMaybe<MovieDeleteInput>;
-  where?: InputMaybe<MovieWhere>;
-};
-
-
-export type MutationUpdateActorsArgs = {
-  connect?: InputMaybe<ActorConnectInput>;
-  create?: InputMaybe<ActorRelationInput>;
-  delete?: InputMaybe<ActorDeleteInput>;
-  disconnect?: InputMaybe<ActorDisconnectInput>;
-  update?: InputMaybe<ActorUpdateInput>;
-  where?: InputMaybe<ActorWhere>;
-};
-
-
-export type MutationUpdateMoviesArgs = {
-  connect?: InputMaybe<MovieConnectInput>;
-  create?: InputMaybe<MovieRelationInput>;
-  delete?: InputMaybe<MovieDeleteInput>;
-  disconnect?: InputMaybe<MovieDisconnectInput>;
-  update?: InputMaybe<MovieUpdateInput>;
-  where?: InputMaybe<MovieWhere>;
 };
 
 /** Pagination information (Relay) */
@@ -561,51 +351,50 @@ export type PageInfo = {
 
 export type Query = {
   __typename?: 'Query';
-  actors: Array<Actor>;
-  actorsAggregate: ActorAggregateSelection;
-  actorsConnection: ActorsConnection;
-  hello?: Maybe<Scalars['String']['output']>;
-  movies: Array<Movie>;
-  moviesAggregate: MovieAggregateSelection;
-  moviesConnection: MoviesConnection;
+  orders: Array<Order>;
+  ordersAggregate: OrderAggregateSelection;
+  ordersConnection: OrdersConnection;
+  users: Array<User>;
+  usersAggregate: UserAggregateSelection;
+  usersConnection: UsersConnection;
 };
 
 
-export type QueryActorsArgs = {
-  options?: InputMaybe<ActorOptions>;
-  where?: InputMaybe<ActorWhere>;
+export type QueryOrdersArgs = {
+  options?: InputMaybe<OrderOptions>;
+  where?: InputMaybe<OrderWhere>;
 };
 
 
-export type QueryActorsAggregateArgs = {
-  where?: InputMaybe<ActorWhere>;
+export type QueryOrdersAggregateArgs = {
+  where?: InputMaybe<OrderWhere>;
 };
 
 
-export type QueryActorsConnectionArgs = {
+export type QueryOrdersConnectionArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   first?: InputMaybe<Scalars['Int']['input']>;
-  sort?: InputMaybe<Array<InputMaybe<ActorSort>>>;
-  where?: InputMaybe<ActorWhere>;
+  sort?: InputMaybe<Array<InputMaybe<OrderSort>>>;
+  where?: InputMaybe<OrderWhere>;
 };
 
 
-export type QueryMoviesArgs = {
-  options?: InputMaybe<MovieOptions>;
-  where?: InputMaybe<MovieWhere>;
+export type QueryUsersArgs = {
+  options?: InputMaybe<UserOptions>;
+  where?: InputMaybe<UserWhere>;
 };
 
 
-export type QueryMoviesAggregateArgs = {
-  where?: InputMaybe<MovieWhere>;
+export type QueryUsersAggregateArgs = {
+  where?: InputMaybe<UserWhere>;
 };
 
 
-export type QueryMoviesConnectionArgs = {
+export type QueryUsersConnectionArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   first?: InputMaybe<Scalars['Int']['input']>;
-  sort?: InputMaybe<Array<InputMaybe<MovieSort>>>;
-  where?: InputMaybe<MovieWhere>;
+  sort?: InputMaybe<Array<InputMaybe<UserSort>>>;
+  where?: InputMaybe<UserWhere>;
 };
 
 /** An enum for sorting in either ascending or descending order. */
@@ -622,12 +411,6 @@ export type StringAggregateSelection = {
   shortest?: Maybe<Scalars['String']['output']>;
 };
 
-export type UpdateActorsMutationResponse = {
-  __typename?: 'UpdateActorsMutationResponse';
-  actors: Array<Actor>;
-  info: UpdateInfo;
-};
-
 /** Information about the number of nodes and relationships created and deleted during an update mutation */
 export type UpdateInfo = {
   __typename?: 'UpdateInfo';
@@ -639,18 +422,258 @@ export type UpdateInfo = {
   relationshipsDeleted: Scalars['Int']['output'];
 };
 
-export type UpdateMoviesMutationResponse = {
-  __typename?: 'UpdateMoviesMutationResponse';
+export type UpdateOrdersMutationResponse = {
+  __typename?: 'UpdateOrdersMutationResponse';
   info: UpdateInfo;
-  movies: Array<Movie>;
+  orders: Array<Order>;
 };
 
-export type ActorNamesFragmentFragment = { __typename?: 'Actor', name?: string | null } & { ' $fragmentName'?: 'ActorNamesFragmentFragment' };
+export type UpdateUsersMutationResponse = {
+  __typename?: 'UpdateUsersMutationResponse';
+  info: UpdateInfo;
+  users: Array<User>;
+};
 
-export type NewQueryQueryVariables = Exact<{ [key: string]: never; }>;
+export type User = {
+  __typename?: 'User';
+  firstName: Scalars['String']['output'];
+  lastName: Scalars['String']['output'];
+  orders: Array<Order>;
+  ordersAggregate?: Maybe<UserOrderOrdersAggregationSelection>;
+  ordersConnection: UserOrdersConnection;
+};
 
 
-export type NewQueryQuery = { __typename?: 'Query', movies: Array<{ __typename?: 'Movie', title?: string | null, actors: Array<{ __typename?: 'Actor', name?: string | null }> }> };
+export type UserOrdersArgs = {
+  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  options?: InputMaybe<OrderOptions>;
+  where?: InputMaybe<OrderWhere>;
+};
 
-export const ActorNamesFragmentFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ActorNamesFragment"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Actor"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]} as unknown as DocumentNode<ActorNamesFragmentFragment, unknown>;
-export const NewQueryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"NewQuery"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"movies"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"actors"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}}]} as unknown as DocumentNode<NewQueryQuery, NewQueryQueryVariables>;
+
+export type UserOrdersAggregateArgs = {
+  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  where?: InputMaybe<OrderWhere>;
+};
+
+
+export type UserOrdersConnectionArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  sort?: InputMaybe<Array<UserOrdersConnectionSort>>;
+  where?: InputMaybe<UserOrdersConnectionWhere>;
+};
+
+export type UserAggregateSelection = {
+  __typename?: 'UserAggregateSelection';
+  count: Scalars['Int']['output'];
+  firstName: StringAggregateSelection;
+  lastName: StringAggregateSelection;
+};
+
+export type UserConnectInput = {
+  orders?: InputMaybe<Array<UserOrdersConnectFieldInput>>;
+};
+
+export type UserConnectWhere = {
+  node: UserWhere;
+};
+
+export type UserCreateInput = {
+  firstName: Scalars['String']['input'];
+  lastName: Scalars['String']['input'];
+  orders?: InputMaybe<UserOrdersFieldInput>;
+};
+
+export type UserDeleteInput = {
+  orders?: InputMaybe<Array<UserOrdersDeleteFieldInput>>;
+};
+
+export type UserDisconnectInput = {
+  orders?: InputMaybe<Array<UserOrdersDisconnectFieldInput>>;
+};
+
+export type UserEdge = {
+  __typename?: 'UserEdge';
+  cursor: Scalars['String']['output'];
+  node: User;
+};
+
+export type UserOptions = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  /** Specify one or more UserSort objects to sort Users by. The sorts will be applied in the order in which they are arranged in the array. */
+  sort?: InputMaybe<Array<UserSort>>;
+};
+
+export type UserOrderOrdersAggregationSelection = {
+  __typename?: 'UserOrderOrdersAggregationSelection';
+  count: Scalars['Int']['output'];
+  node?: Maybe<UserOrderOrdersNodeAggregateSelection>;
+};
+
+export type UserOrderOrdersNodeAggregateSelection = {
+  __typename?: 'UserOrderOrdersNodeAggregateSelection';
+  orderType: StringAggregateSelection;
+};
+
+export type UserOrdersAggregateInput = {
+  AND?: InputMaybe<Array<UserOrdersAggregateInput>>;
+  NOT?: InputMaybe<UserOrdersAggregateInput>;
+  OR?: InputMaybe<Array<UserOrdersAggregateInput>>;
+  count?: InputMaybe<Scalars['Int']['input']>;
+  count_GT?: InputMaybe<Scalars['Int']['input']>;
+  count_GTE?: InputMaybe<Scalars['Int']['input']>;
+  count_LT?: InputMaybe<Scalars['Int']['input']>;
+  count_LTE?: InputMaybe<Scalars['Int']['input']>;
+  node?: InputMaybe<UserOrdersNodeAggregationWhereInput>;
+};
+
+export type UserOrdersConnectFieldInput = {
+  connect?: InputMaybe<Array<OrderConnectInput>>;
+  /** Whether or not to overwrite any matching relationship with the new properties. */
+  overwrite?: Scalars['Boolean']['input'];
+  where?: InputMaybe<OrderConnectWhere>;
+};
+
+export type UserOrdersConnection = {
+  __typename?: 'UserOrdersConnection';
+  edges: Array<UserOrdersRelationship>;
+  pageInfo: PageInfo;
+  totalCount: Scalars['Int']['output'];
+};
+
+export type UserOrdersConnectionSort = {
+  node?: InputMaybe<OrderSort>;
+};
+
+export type UserOrdersConnectionWhere = {
+  AND?: InputMaybe<Array<UserOrdersConnectionWhere>>;
+  NOT?: InputMaybe<UserOrdersConnectionWhere>;
+  OR?: InputMaybe<Array<UserOrdersConnectionWhere>>;
+  node?: InputMaybe<OrderWhere>;
+};
+
+export type UserOrdersCreateFieldInput = {
+  node: OrderCreateInput;
+};
+
+export type UserOrdersDeleteFieldInput = {
+  delete?: InputMaybe<OrderDeleteInput>;
+  where?: InputMaybe<UserOrdersConnectionWhere>;
+};
+
+export type UserOrdersDisconnectFieldInput = {
+  disconnect?: InputMaybe<OrderDisconnectInput>;
+  where?: InputMaybe<UserOrdersConnectionWhere>;
+};
+
+export type UserOrdersFieldInput = {
+  connect?: InputMaybe<Array<UserOrdersConnectFieldInput>>;
+  create?: InputMaybe<Array<UserOrdersCreateFieldInput>>;
+};
+
+export type UserOrdersNodeAggregationWhereInput = {
+  AND?: InputMaybe<Array<UserOrdersNodeAggregationWhereInput>>;
+  NOT?: InputMaybe<UserOrdersNodeAggregationWhereInput>;
+  OR?: InputMaybe<Array<UserOrdersNodeAggregationWhereInput>>;
+  orderType_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
+  orderType_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
+  orderType_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
+  orderType_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
+  orderType_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
+  orderType_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  orderType_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
+  orderType_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
+  orderType_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
+  orderType_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  orderType_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  orderType_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
+  orderType_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
+  orderType_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
+  orderType_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+};
+
+export type UserOrdersRelationship = {
+  __typename?: 'UserOrdersRelationship';
+  cursor: Scalars['String']['output'];
+  node: Order;
+};
+
+export type UserOrdersUpdateConnectionInput = {
+  node?: InputMaybe<OrderUpdateInput>;
+};
+
+export type UserOrdersUpdateFieldInput = {
+  connect?: InputMaybe<Array<UserOrdersConnectFieldInput>>;
+  create?: InputMaybe<Array<UserOrdersCreateFieldInput>>;
+  delete?: InputMaybe<Array<UserOrdersDeleteFieldInput>>;
+  disconnect?: InputMaybe<Array<UserOrdersDisconnectFieldInput>>;
+  update?: InputMaybe<UserOrdersUpdateConnectionInput>;
+  where?: InputMaybe<UserOrdersConnectionWhere>;
+};
+
+export type UserRelationInput = {
+  orders?: InputMaybe<Array<UserOrdersCreateFieldInput>>;
+};
+
+/** Fields to sort Users by. The order in which sorts are applied is not guaranteed when specifying many fields in one UserSort object. */
+export type UserSort = {
+  firstName?: InputMaybe<SortDirection>;
+  lastName?: InputMaybe<SortDirection>;
+};
+
+export type UserUpdateInput = {
+  firstName?: InputMaybe<Scalars['String']['input']>;
+  lastName?: InputMaybe<Scalars['String']['input']>;
+  orders?: InputMaybe<Array<UserOrdersUpdateFieldInput>>;
+};
+
+export type UserWhere = {
+  AND?: InputMaybe<Array<UserWhere>>;
+  NOT?: InputMaybe<UserWhere>;
+  OR?: InputMaybe<Array<UserWhere>>;
+  firstName?: InputMaybe<Scalars['String']['input']>;
+  firstName_CONTAINS?: InputMaybe<Scalars['String']['input']>;
+  firstName_ENDS_WITH?: InputMaybe<Scalars['String']['input']>;
+  firstName_IN?: InputMaybe<Array<Scalars['String']['input']>>;
+  firstName_STARTS_WITH?: InputMaybe<Scalars['String']['input']>;
+  lastName?: InputMaybe<Scalars['String']['input']>;
+  lastName_CONTAINS?: InputMaybe<Scalars['String']['input']>;
+  lastName_ENDS_WITH?: InputMaybe<Scalars['String']['input']>;
+  lastName_IN?: InputMaybe<Array<Scalars['String']['input']>>;
+  lastName_STARTS_WITH?: InputMaybe<Scalars['String']['input']>;
+  ordersAggregate?: InputMaybe<UserOrdersAggregateInput>;
+  /** Return Users where all of the related UserOrdersConnections match this filter */
+  ordersConnection_ALL?: InputMaybe<UserOrdersConnectionWhere>;
+  /** Return Users where none of the related UserOrdersConnections match this filter */
+  ordersConnection_NONE?: InputMaybe<UserOrdersConnectionWhere>;
+  /** Return Users where one of the related UserOrdersConnections match this filter */
+  ordersConnection_SINGLE?: InputMaybe<UserOrdersConnectionWhere>;
+  /** Return Users where some of the related UserOrdersConnections match this filter */
+  ordersConnection_SOME?: InputMaybe<UserOrdersConnectionWhere>;
+  /** Return Users where all of the related Orders match this filter */
+  orders_ALL?: InputMaybe<OrderWhere>;
+  /** Return Users where none of the related Orders match this filter */
+  orders_NONE?: InputMaybe<OrderWhere>;
+  /** Return Users where one of the related Orders match this filter */
+  orders_SINGLE?: InputMaybe<OrderWhere>;
+  /** Return Users where some of the related Orders match this filter */
+  orders_SOME?: InputMaybe<OrderWhere>;
+};
+
+export type UsersConnection = {
+  __typename?: 'UsersConnection';
+  edges: Array<UserEdge>;
+  pageInfo: PageInfo;
+  totalCount: Scalars['Int']['output'];
+};
+
+export type Get_Users_QueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type Get_Users_QueryQuery = { __typename?: 'Query', users: Array<{ __typename?: 'User', firstName: string, lastName: string }> };
+
+
+export const Get_Users_QueryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GET_USERS_QUERY"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"users"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"firstName"}},{"kind":"Field","name":{"kind":"Name","value":"lastName"}}]}}]}}]} as unknown as DocumentNode<Get_Users_QueryQuery, Get_Users_QueryQueryVariables>;

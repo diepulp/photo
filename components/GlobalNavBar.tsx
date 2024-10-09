@@ -17,6 +17,7 @@ import { usePathname, useRouter } from 'next/navigation'
 import { SocialIcon } from 'react-social-icons/component'
 import { useEffect, useState } from 'react'
 import 'react-social-icons/vimeo'
+import dynamic from 'next/dynamic'
 export default function GlobalNavBar() {
   const pathName = usePathname()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -30,12 +31,14 @@ export default function GlobalNavBar() {
 
   const isActive = (path: string) => activePath === path
 
+  const SocialIcon = dynamic(() => import('react-social-icons').then((mod) => mod.SocialIcon), { ssr: false })
+
   // console.log('Router Pathname', pathName)
 
   const menuItems = ['Home', 'Portfolio', 'About', 'Investment', 'Contact', 'Graduates', 'Wedding Packages', 'Log Out']
   return (
     <Navbar
-      className="border bg-[rgb(36,36,36)] text-white"
+      className="border bg-[rgb(249,246,246)] text-black"
       onMenuOpenChange={setIsMenuOpen}
       classNames={{
         item: [
@@ -87,7 +90,11 @@ export default function GlobalNavBar() {
           </Button>
         </NavbarItem>
         <NavbarItem>
-          <SocialIcon fgColor="grey" bgColor="transparent" url="www.vimeo.com" />
+          {/* <SocialIcon
+            fgColor="grey"
+            bgColor="transparent"
+            url="https://pixieset.com/?utm_source=pixieset&utm_medium=ps-website&utm_campaign=ps-branding"
+          /> */}
         </NavbarItem>
       </NavbarContent>
       <p>Menu</p>

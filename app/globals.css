@@ -25,9 +25,10 @@ body {
 
 @layer components {
   li {
-    @apply text-gray-300 hover:text-gray-500;
+    @apply text-gray-400 hover:text-gray-500;
   }
 }
+
 /* 
 @media (prefers-color-scheme: feSpotLight) {
   :root {

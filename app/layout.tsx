@@ -38,12 +38,16 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html className="" lang="en">
       <body className={`${bitter.className} h-screen flex flex-col`}>
-        <GlobalNavBar />
+        <div className="">
+          <GlobalNavBar />
+        </div>
         {/* <Header /> */}
-        <div className="flex-1 flex overflow-hidden">
-          <Sidebar />
+        <div className="flex-1 flex overflow-hidden ">
+          <div className="lg:hiddent">
+            <Sidebar />
+          </div>
           <main className="flex-1 overflow-auto p-4">
             <Providers>{children}</Providers>
           </main>
