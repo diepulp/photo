@@ -27,7 +27,7 @@ const Sidebar = (props: Props) => {
           <span className="block">Photography</span>
         </h1>
       </header>
-      <section className="flex-1 h-full p-10 left-0 right-0 w-full mx-auto overflow-y-auto !scrollbar-thumb-red-600 scrollbar-thin  scrollbar-track-sky-300">
+      <section className="flex-1 h-full p-10 left-0 right-0 w-full mx-auto overflow-y-auto scrollbar-thumb-gray-500 scrollbar-thin">
         <ul className="text-gray-300 hover:text-gray-500 ">
           <li className="mt-2">
             <Link href="#">Home</Link>

@@ -21,6 +21,6 @@ const config: Config = {
     },
   },
   darkMode: 'class',
-  plugins: [nextui(), require('tailwind-scrollbar')],
+  plugins: [nextui(), require('tailwind-scrollbar'), require('@tailwindcss/aspect-ratio')],
 }
 export default config

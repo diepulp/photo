@@ -40,12 +40,12 @@ export default function RootLayout({
   return (
     <html className="" lang="en">
       <body className={`${bitter.className} h-screen flex flex-col`}>
-        <div className="">
+        <div className="lg:hidden">
           <GlobalNavBar />
         </div>
         {/* <Header /> */}
         <div className="flex-1 flex overflow-hidden ">
-          <div className="lg:hiddent">
+          <div className="lg:block hidden">
             <Sidebar />
           </div>
           <main className="flex-1 overflow-auto p-4">

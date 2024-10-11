@@ -1,15 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
-    serverComponentsExternalPackages: ["graphql"],
+    serverComponentsExternalPackages: ['graphql'],
   },
   reactStrictMode: true,
   webpack: (config, options) => {
     config.experiments = {
       topLevelAwait: true,
       layers: true,
-    };
-    return config;
+    }
+    return config
   },
-};
-export default nextConfig;
+}
+export default nextConfig

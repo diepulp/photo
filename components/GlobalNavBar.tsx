@@ -64,7 +64,7 @@ export default function GlobalNavBar() {
         </NavbarBrand>
       </NavbarContent>
 
-      <NavbarContent className=" sm:flex gap-4 items-center flex" justify="center">
+      {/* <NavbarContent className=" sm:flex gap-4 items-center flex" justify="center">
         <NavbarItem
           className={`px-4 py-2 ${isActive('/image-gallery') ? 'text-red-500' : 'text-black'} hover:text-red-500`}
           isActive={isActive('/image-gallery')}
@@ -79,7 +79,7 @@ export default function GlobalNavBar() {
         <NavbarItem isActive={isActive('/notes')}>
           <Link href="/notes">Notes</Link>
         </NavbarItem>
-      </NavbarContent>
+      </NavbarContent> */}
       <NavbarContent justify="end">
         <NavbarItem className="hidden lg:flex">
           <Link href="#">Login</Link>
