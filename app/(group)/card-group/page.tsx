@@ -4,6 +4,7 @@ import Gallery from '@/components/ui/Gallery'
 import path from 'path'
 import fs from 'fs'
 import Image from 'next/image'
+import MasonryGallery from '@/components/ui/MasonryGallery'
 
 type Props = {
   images: string[]
@@ -15,7 +16,7 @@ async function getImages(): Promise<string[]> {
     const files = fs.readdirSync(galleryPath)
 
     // Filter to include only image files
-    const images = files.filter((file) => /\.(jpg|jpeg|png|gif)$/.test(file))
+    const images = files.filter((file) => /\.(jpg|jpeg|png|gif|webp|avif)$/.test(file))
     return images
   } catch (error) {
     console.error('Error reading gallery images:', error)
@@ -29,6 +30,7 @@ export default async function CardGroup({ images }: Props) {
   return (
     <>
       <Gallery images={images} />
+      <MasonryGallery images={images} />
     </>
   )
 }

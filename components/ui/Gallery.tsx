@@ -1,12 +1,11 @@
 import React from 'react'
 import Image from 'next/image'
 import BlurImage from '@/components/ui/BlurImage'
-
+import ImageMasonry from './ImageMasonry'
 
 type Props = {
   images: string[]
 }
-
 
 function cn(...classes: String[]) {
   return classes.filter(Boolean).join(' ')
@@ -19,12 +18,12 @@ export default function Gallery({ images }: Props) {
         <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
           {images?.map((image, index) => (
             <div key={index} className="w-full h-auto">
-              <BlurImage image={image}
-              />
+              <BlurImage image={image} />
             </div>
           ))}
         </div>
       </div>
+      <ImageMasonry images={images} />
     </>
   )
 }
