@@ -5,7 +5,7 @@ import { useState } from 'react'
 
 type Image = {
   image: string
-  index: number
+  key: number
 }
 function cn(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
@@ -16,14 +16,16 @@ const imageLoader = ({ src, width, quality }) => {
 
 const BlurImage = ({ image, index }: Image) => {
   const [isLoading, setLoading] = useState(true)
+  console.log('image in the blur image', image, index)
   return (
-    <div>
+    <>
       <a href="#" className="group">
         <div className="relative aspect-w-1 aspect-h-2 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-5 xl:aspect-h-7">
           <Image
             alt={`Image ${index + 1}`}
             src={`/gallery/${image}`}
             fill
+            sizes="(max-width: 768px) 100vw, (min-width: 768px) 33vw"
             className={cn(
               'duration-700 ease-in-out group-hover:opacity-75 object-cover',
               isLoading ? 'scale-110 blur-2xl grayscale' : 'scale-100 blur-0 grayscale-0',
@@ -34,7 +36,7 @@ const BlurImage = ({ image, index }: Image) => {
           />
         </div>
       </a>
-    </div>
+    </>
   )
 }
 

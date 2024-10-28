@@ -1,6 +1,6 @@
 import { SunIcon } from '@heroicons/react/24/outline'
 import { Open_Sans } from 'next/font/google'
-import { Card, CardFooter, Image, Button } from '@nextui-org/react'
+// import { Card, CardFooter, Image, Button } from '@nextui-org/react'
 import Experience from '../../components/Experience'
 import ExpCard from '../../components/ExpCard'
 
@@ -12,7 +12,7 @@ const Home = () => {
         <SunIcon className="size-6 text-blue-500" />
       </div>
       <div className="m-3">
-        <Card isFooterBlurred radius="lg" className="border-none flex items-start w-[10rem] h-[300px]">
+        {/* <Card isFooterBlurred radius="lg" className="border-none flex items-start w-[10rem] h-[300px]">
           <Image
             alt="Woman listing to music"
             className="object-cover"
@@ -26,7 +26,7 @@ const Home = () => {
               Notify me
             </Button>
           </CardFooter>
-        </Card>
+        </Card> */}
       </div>
       <Experience />
     </>

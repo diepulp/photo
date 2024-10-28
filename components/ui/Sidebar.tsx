@@ -22,15 +22,17 @@ const Sidebar = (props: Props) => {
     <div className="sidebar w-64 h-full items-center mx-auto bg-[#FFFFFF] flex flex-col ">
       <header className="p-10 left-0 right-0 w-full mx-auto ">
         <h1 className=" text-medium text-left text-gray-500 font-medium w-32 tracking-[0.2rem] uppercase">
-          <span className="block">Anastasiya</span>
-          <span className="block">Ivanova</span>
-          <span className="block">Photography</span>
+          <Link href="/home">
+            <span className="block">Anastasiya</span>
+            <span className="block">Ivanova</span>
+            <span className="block">Photography</span>
+          </Link>
         </h1>
       </header>
       <section className="flex-1 h-full p-10 left-0 right-0 w-full mx-auto overflow-y-auto scrollbar-thumb-gray-500 scrollbar-thin">
         <ul className="text-gray-300 hover:text-gray-500 ">
           <li className="mt-2">
-            <Link href="#">Home</Link>
+            <Link href="/home">Home</Link>
           </li>
           <li className="mt-2 relative">
             <button onClick={toggleDropdown} className="flex items-center justify-between w-full">

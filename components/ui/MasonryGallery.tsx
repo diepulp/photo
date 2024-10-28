@@ -1,31 +1,49 @@
-import React from 'react'
+import * as React from 'react'
+import Box from '@mui/material/Box'
+import Paper from '@mui/material/Paper'
+import Masonry from '@mui/lab/Masonry'
+import { styled } from '@mui/material/styles'
 import BlurImage from './BlurImage'
+import ImageList from '@mui/material/ImageList'
+import ImageListItem from '@mui/material/ImageListItem'
+import Image from 'next/image'
+import { useState } from 'react'
 
-type Props = {
-  images: string[]
-}
-// Helper function to chunk the images array
-const chunkArray = (array, chunkSize) => {
-  const result = []
-  for (let i = 0; i < array.length; i += chunkSize) {
-    result.push(array.slice(i, i + chunkSize))
-  }
-  return result
-}
+const Label = styled(Paper)(({ theme }) => ({
+  backgroundColor: '#fff',
+  ...theme.typography.body2,
+  padding: theme.spacing(0.5),
+  textAlign: 'center',
+  color: theme.palette.text.secondary,
+  borderBottomLeftRadius: 0,
+  borderBottomRightRadius: 0,
+  ...theme.applyStyles('dark', {
+    backgroundColor: '#1A2027',
+  }),
+}))
 
-export default function MasonryGallery({ images }: Props) {
-  const imageChunks = chunkArray(images, Math.ceil(images.length / 3))
+
+export default function MasonryGallery({ images }) {
+
+  console.log('iMages in the masonry', images)
   return (
-    <div className="relative grid grid-cols-1 md:grid-cols-3 gap-4 w-full h-full">
-      {imageChunks.map((chunk, columnIndex) => (
-        <div key={columnIndex} className="grid gap-4">
-          {chunk.map((src, imageIndex) => (
-            <div key={imageIndex} className="relative aspect-square">
-              <BlurImage className="h-auto w-full object-cover rounded-lg" src={src} alt={`Image ${imageIndex + 1}`} fill />
-            </div>
-          ))}
-        </div>
-      ))}
-    </div>
+    <Box
+      sx={{
+        width: '100%', // Allow the Box to take the full width of its parent container
+        maxWidth: 1200, // Set a max width to maintain visual appeal on large screens
+        margin: '1 auto', // Center the Box horizontally within the parent container
+        padding: 5, // Optional: Add padding to prevent content from touching edges
+      }}
+    >
+      <Masonry columns={{ xs: 1, sm: 2, md: 3 }} spacing={2}>
+        {images.map((image, index) => (
+          <div key={index}>
+            <Label>{index + 1}</Label>
+            <BlurImage image={image} />
+          </div>
+        ))}
+      </Masonry>
+    </Box>
+
   )
 }

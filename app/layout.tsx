@@ -4,14 +4,14 @@ import { Inter, Raleway, Bitter } from 'next/font/google'
 import { Playfair_Display } from 'next/font/google'
 import {} from 'next/font/google'
 import './globals.css'
-import Image from 'next/image'
-import NavLinks from '../components/NavLinks'
-
+import { ThemeProvider } from '@mui/material-nextjs'
 import { Providers } from '../contexts/providers'
 import { NextUIProvider } from '@nextui-org/react'
 import GlobalNavBar from '../components/GlobalNavBar'
 import Header from '../components/Header'
 import Sidebar from '@/components/ui/Sidebar'
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter'
+
 const inter = Inter({ subsets: ['latin'] })
 const raleway = Raleway({ subsets: ['latin'] })
 const playfair = Playfair_Display({

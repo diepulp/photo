@@ -30,7 +30,7 @@ export default async function CardGroup({ images }: Props) {
   return (
     <>
       <Gallery images={images} />
-      <MasonryGallery images={images} />
+      {/* <MasonryGallery images={images} /> */}
     </>
   )
 }
