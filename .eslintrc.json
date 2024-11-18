@@ -1,6 +1,17 @@
 {
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
   "extends": "next/core-web-vitals"
   // "rules": {
   //   "no-unused-vars": "warn" // or "error" depending on your preference
+  // "@typescript-eslint/consistent-type-imports": "error",
+  //   "no-console": "warn",
+  //   "@typescript-eslint/ban-ts-comment": "off",
+  //   "@typescript-eslint/no-explicit-any": "error",
+  //   "@typescript-eslint/no-empty-function": "off",
+  //   "@typescript-eslint/no-non-null-assertion": "error",
+  //   "no-fallthrough": "off"
   // }
+
+ 
 }

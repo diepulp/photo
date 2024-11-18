@@ -9,6 +9,7 @@ import GalleryModal from './GalleryModal'
 import { useDisclosure } from '@nextui-org/react'
 import { useState } from 'react'
 import { use } from 'chai'
+import EmblaCarousel from './EmblaCarousel'
 
 type GalleryProps = {
   images: string[]
@@ -26,23 +27,25 @@ export default function Gallery({ images }: GalleryProps): React.JSX.Element {
     setSelectedIndex(index)
     setIsOpen(true)
   }
+  console.log('INdex: ', selectedIndex)
 
   const closeModal = () => {
     setIsOpen(false)
   }
   return (
     <>
-      <GalleryModal isOpen={isOpen} onClose={closeModal} images={images} />
-      <div className="mx-auto max-w-2xl py-5 px-3 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-5">
+      <GalleryModal isOpen={isOpen} onClose={closeModal} images={images} selectedIndex={selectedIndex} />
+      <div className="mx-auto">
         <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
           {images?.map((image, index) => (
-            <div key={index} className="w-full h-auto" onClick={() => openModal()}>
+            <div key={index} className="w-full h-auto" onClick={() => openModal(index)}>
               <BlurImage image={image} index={index} />
             </div>
           ))}
         </div>
       </div>
-      <Carousel slides={images} />
+
+      {/* <EmblaCarousel slides={images} /> */}
     </>
   )
 }

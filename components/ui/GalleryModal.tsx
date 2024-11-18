@@ -1,10 +1,28 @@
-import React, { useEffect } from 'react'
-import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure } from '@nextui-org/react'
+'use client'
+import React, { useEffect, useState } from 'react'
+import {
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Button,
+  useDisclosure,
+  styled,
+} from '@nextui-org/react'
 import EmblaCarousel from './EmblaCarousel'
+import Image from 'next/image'
 
-export default function GalleryModal({ isOpen, images, onClose }) {
+type GalleryModalProps = {
+  isOpen: boolean
+  onClose: () => void
+  images: string[]
+  selectedIndex: number
+}
+export default function GalleryModal({ isOpen, images, onClose, selectedIndex }: GalleryModalProps) {
   const { onOpen } = useDisclosure()
-  const [backdrop, setBackdrop] = React.useState('opaque')
+  const [backdrop, setBackdrop] = useState('opaque')
+  console.log('selected index from gallery modal', selectedIndex)
 
   const backdrops = ['opaque', 'blur', 'transparent']
 
@@ -19,27 +37,43 @@ export default function GalleryModal({ isOpen, images, onClose }) {
     }
   }, [isOpen])
 
+  if (typeof window !== 'undefined' && window.innerWidth < 768) {
+    return null
+  }
+
   return (
     <>
-      <Modal size="5xl" backdrop={backdrop} isOpen={isOpen} onClose={onClose}>
-        <ModalContent>
+      <Modal
+        size="2xl"
+        backdrop={backdrop}
+        isOpen={isOpen}
+        onClose={onClose}
+        classNames={{
+          body: 'w-full h-full m-auto',
+          wrapper: 'flex overflow-hidden items-center justify-center',
+          base: 'overflow-hidden',
+          closeButton: 'hidden',
+        }}
+      >
+        <ModalContent className="bg-transparent max-h-[90vh] w-full h-full ">
           {(onClose) => (
             <>
-              <ModalHeader className="flex flex-col gap-1">Modal Title</ModalHeader>
-              <ModalBody>
-                <EmblaCarousel
-                  className="max-h-[500px] w-full object-cover .embla__carousel--custom "
-                  slides={images}
-                />
+              <ModalBody className="bg-transparent overflow-hidden">
+                <div className="">
+                  {/* <Image
+                    alt={`alt`}
+                    src={`/gallery/${images[selectedIndex]}`}
+                    fill
+                    className="object-contain"
+                    priority="false"
+                    quality={75}
+                    sizes="(max-width: 768px) 100vw, (min-width: 568px) 33vw"
+                  /> */}
+
+                  <EmblaCarousel slides={images} selectedIndex={selectedIndex} />
+                </div>
               </ModalBody>
-              <ModalFooter>
-                <Button color="danger" variant="light" onPress={onClose}>
-                  Close
-                </Button>
-                <Button color="primary" onPress={onClose}>
-                  Action
-                </Button>
-              </ModalFooter>
+              <ModalFooter className="mb-5 flex justify-end items-center space-x-4"></ModalFooter>
             </>
           )}
         </ModalContent>

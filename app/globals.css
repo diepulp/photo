@@ -30,37 +30,43 @@ body {
 }
 
 /* Carousel */
-/* .embla {
-  overflow: hidden;
-}
-.embla__container {
-  display: flex;
-}
-.embla__slide {
-  flex: 0 0 100%;
-  min-width: 0;
-} */
-
 .embla {
   max-width: 48rem;
   margin: auto;
-  --slide-height: 19rem;
+  --slide-height: 58rem;
   --slide-spacing: 1rem;
   --slide-size: 100%;
+  display: flex;
+  flex-direction: column;
 }
 .embla__viewport {
   overflow: hidden;
+  position: relative;
+  width: 80%;
+  height: auto;
+  align-items: center;
+  justify-content: center;
+  max-height: 80vh;
+  overflow: hidden;
+  margin: auto;
 }
 .embla__container {
   display: flex;
   touch-action: pan-y pinch-zoom;
-  margin-left: calc(var(--slide-spacing) * -1);
+  /* margin-left: calc(var(--slide-spacing) * -1); */
+  height: auto;
+  align-items: center;
+  width: 100%;
 }
 .embla__slide {
   transform: translate3d(0, 0, 0);
-  flex: 0 0 var(--slide-size);
+  flex: 0 0 auto;
+  width: 80%;
+  margin: 0 auto;
   min-width: 0;
   padding-left: var(--slide-spacing);
+  position: relative; /* Needed for Next.js Image fill */
+  margin: auto;
 }
 .embla__slide__img {
   border-radius: 1.8rem;
@@ -68,6 +74,10 @@ body {
   height: var(--slide-height);
   width: 100%;
   object-fit: cover;
+  width: 100%; /* Needed for visibility */
+  height: auto;
+  overflow: hidden;
+  margin: auto;
 }
 .embla__controls {
   display: grid;
@@ -152,10 +162,7 @@ body {
 .embla__slide__img {
   user-select: none;
 }
-.embla__carousel--custom {
-  width: 25%;
-  height: auto;
-}
+
 /* 
 @media (prefers-color-scheme: feSpotLight) {
   :root {
