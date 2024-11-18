@@ -58,7 +58,7 @@ export default function GlobalNavBar() {
       }}
     >
       <NavbarContent>
-        <NavbarMenuToggle aria-label={isMenuOpen ? 'Close menu' : 'Open menu'} className="sm:hidden" />
+        <NavbarMenuToggle aria-label={isMenuOpen ? 'Close menu' : 'Open menu'} className="lg:hidden" />
         <NavbarBrand>
           {/* Short text for mobile */}
           <p className="text-inherit block lg:hidden"></p>
@@ -71,8 +71,16 @@ export default function GlobalNavBar() {
           <Link href="#">Login</Link>
         </NavbarItem>
         <NavbarItem>
-          <Button as={Link} color="primary" href="#" variant="flat">
-            Sign Up
+          <Button
+            className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg"
+            as={Link}
+            color="primary"
+            href="#"
+            variant="faded"
+            size="sm"
+            radius="full"
+          >
+            Book Now
           </Button>
         </NavbarItem>
         <NavbarItem></NavbarItem>

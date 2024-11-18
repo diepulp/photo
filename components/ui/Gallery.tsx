@@ -38,7 +38,7 @@ export default function Gallery({ images }: GalleryProps): React.JSX.Element {
       <div className="mx-auto overflow-hidden">
         <div className="grid grid-cols-1 gap-y-10 gap-x-6 w-full h-full m-auto overflow-hidden sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
           {images?.map((image, index) => (
-            <div key={index} className="w-full h-auto overflow-scroll" onClick={() => openModal(index)}>
+            <div key={index} className="w-full h-auto overflow-hidden" onClick={() => openModal(index)}>
               <BlurImage image={image} index={index} />
             </div>
           ))}

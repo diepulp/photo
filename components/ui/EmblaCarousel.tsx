@@ -29,7 +29,7 @@ const EmblaCarousel = ({ slides, selectedIndex }) => {
         <div className="embla__container relative m-auto">
           {slides.map((image, index) => (
             <div className="embla__slide" key={index}>
-              <div className=".embla__slide__img aspect-w-2 aspect-h-3 relative m-auto">
+              <div className=".embla__slide__img aspect-w-2 aspect-h-3 relative m-auto box-border">
                 <Image
                   alt={`Slide  ${index + 1}`}
                   src={`/gallery/${image}`}
