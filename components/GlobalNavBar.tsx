@@ -38,7 +38,7 @@ export default function GlobalNavBar() {
   const menuItems = ['Home', 'Portfolio', 'About', 'Investment', 'Contact', 'Graduates', 'Wedding Packages', 'Log Out']
   return (
     <Navbar
-      className="border bg-[rgb(249,246,246)] text-black"
+      className="border bg-[rgb(249,246,246)] text-black "
       onMenuOpenChange={setIsMenuOpen}
       classNames={{
         item: [
@@ -58,28 +58,14 @@ export default function GlobalNavBar() {
       }}
     >
       <NavbarContent>
-        <NavbarMenuToggle aria-label={isMenuOpen ? 'Close menu' : 'Open menu'} className="md:hidden" />
+        <NavbarMenuToggle aria-label={isMenuOpen ? 'Close menu' : 'Open menu'} className="sm:hidden" />
         <NavbarBrand>
-          <p className="  text-inherit">Anastasiya Ivanova Photography</p>
+          {/* Short text for mobile */}
+          <p className="text-inherit block lg:hidden"></p>
+          {/* Full text for larger screens */}
+          <p className="text-inherit hidden lg:block">Anastasiya Ivanova Photography</p>
         </NavbarBrand>
       </NavbarContent>
-
-      {/* <NavbarContent className=" sm:flex gap-4 items-center flex" justify="center">
-        <NavbarItem
-          className={`px-4 py-2 ${isActive('/image-gallery') ? 'text-red-500' : 'text-black'} hover:text-red-500`}
-          isActive={isActive('/image-gallery')}
-        >
-          <Link href="/image-gallery">Image Gallery</Link>
-        </NavbarItem>
-        <NavbarItem isActive={isActive('/home')}>
-          <Link href="/" aria-current="page">
-            Home
-          </Link>
-        </NavbarItem>
-        <NavbarItem isActive={isActive('/notes')}>
-          <Link href="/notes">Notes</Link>
-        </NavbarItem>
-      </NavbarContent> */}
       <NavbarContent justify="end">
         <NavbarItem className="hidden lg:flex">
           <Link href="#">Login</Link>
@@ -89,22 +75,16 @@ export default function GlobalNavBar() {
             Sign Up
           </Button>
         </NavbarItem>
-        <NavbarItem>
-          {/* <SocialIcon
-            fgColor="grey"
-            bgColor="transparent"
-            url="https://pixieset.com/?utm_source=pixieset&utm_medium=ps-website&utm_campaign=ps-branding"
-          /> */}
-        </NavbarItem>
+        <NavbarItem></NavbarItem>
       </NavbarContent>
-      <p>Menu</p>
-      <NavbarMenu className="flex flex-col items-center text-left justify-center">
+
+      <NavbarMenu className="flex flex-col text-left justify-center items-center">
         {menuItems.map((item, index) => (
-          <NavbarMenuItem key={`${item}-${index}`} className=" tracking-[0.25rem]">
+          <NavbarMenuItem key={`${item}-${index}`} className=" tracking-[0.25rem] flex items-center justify-center">
             <Link
               color={index === 2 ? 'primary' : index === menuItems.length - 1 ? 'danger' : 'foreground'}
-              className="w-full text-2xl"
-              href="#"
+              className="w-full text-sm lg:text-lg"
+              href={`/${item.toLowerCase()}`}
               size="lg"
             >
               {item}

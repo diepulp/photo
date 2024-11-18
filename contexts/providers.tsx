@@ -9,7 +9,7 @@ const theme = createTheme()
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <NextUIProvider>
-      <ApolloWrapper>{children}</ApolloWrapper>
+      <ApolloWrapper className="">{children}</ApolloWrapper>
     </NextUIProvider>
   )
 }
