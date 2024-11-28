@@ -35,8 +35,8 @@ export default function Gallery({ images }: GalleryProps): React.JSX.Element {
   return (
     <>
       <GalleryModal isOpen={isOpen} onClose={closeModal} images={images} selectedIndex={selectedIndex} />
-      <div className="mx-auto overflow-hidden">
-        <div className="grid grid-cols-1 gap-y-10 gap-x-6 w-full h-full m-auto overflow-hidden sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+      <div className="mx-auto ">
+        <div className="grid grid-cols-1 gap-y-3 gap-x-6 w-full h-full m-auto overflow-hidden sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-3">
           {images?.map((image, index) => (
             <div key={index} className="w-full h-auto overflow-hidden" onClick={() => openModal(index)}>
               <BlurImage image={image} index={index} />
@@ -45,7 +45,7 @@ export default function Gallery({ images }: GalleryProps): React.JSX.Element {
         </div>
       </div>
 
-      {/* <EmblaCarousel slides={images} /> */}
+      <EmblaCarousel slides={images} selectedIndex={selectedIndex} />
     </>
   )
 }

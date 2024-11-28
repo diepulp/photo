@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 
+import type { Viewport } from 'next'
 import { Inter, Raleway, Bitter } from 'next/font/google'
 import { Playfair_Display } from 'next/font/google'
 import {} from 'next/font/google'
@@ -29,13 +30,22 @@ export const metadata: Metadata = {
     default: 'Photo attempt',
   },
 
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 1, // Optional: Prevent zooming
-  },
+  // viewport: {
+  //   width: 'device-width',
+  //   initialScale: 1,
+  //   maximumScale: 1, // Optional: Prevent zooming
+  // },
 
   description: 'Photo ',
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  // Also supported by less commonly used
+  // interactiveWidget: 'resizes-visual',
 }
 
 export default function RootLayout({
@@ -55,7 +65,7 @@ export default function RootLayout({
             <div className="lg:hidden w-screen sticky top-0 z-50 ">
               <GlobalNavBar />
             </div>
-            <div className="p-4 pt-16">
+            <div className="">
               <Providers>{children}</Providers>
             </div>
           </main>
