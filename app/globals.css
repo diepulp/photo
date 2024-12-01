@@ -28,17 +28,6 @@ body {
     @apply text-gray-400 hover:text-gray-500;
   }
 }
-@media (min-width: 768px) {
-  .embla__slide {
-    flex: 1 0 33.333%; /* Three slides per view */
-  }
-}
-@media (min-width: 1024px) {
-  /* Large screens */
-  .embla__slide {
-    flex: 1 0 33.333%; /* Three slides per view */
-  }
-}
 
 /* Carousel */
 .embla {
@@ -51,6 +40,8 @@ body {
   flex-direction: column;
   max-width: 90vw;
   max-height: 90vh;
+  width: auto;
+  height: 100%;
 }
 .embla__viewport {
   overflow: hidden;
@@ -59,30 +50,31 @@ body {
   height: auto;
   align-items: center;
   justify-content: center;
-  max-height: 90vh;
+  max-height: 100vh;
   overflow: hidden;
   justify-self: center;
+
   /* margin: auto; */
 }
 .embla__container {
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: 80%; /* Each slide covers 80% of the viewport */
-
   touch-action: pan-y pinch-zoom;
   margin-left: calc(var(--slide-spacing) * -1);
-  height: 90vh;
+  height: auto;
+  width: auto;
   overflow: hidden;
 }
 .embla__slide {
   transform: translate3d(0, 0, 0);
-  flex: 0 0 auto; /* Adapt slide size to its content */
+  flex: 0 0 100%; /* Adapt slide size to its content */
   min-width: 0;
   max-width: 100%;
-  width: 75rem;
+  width: 85rem;
   height: auto;
   margin: 0 auto;
-  min-width: 50%;
+
   padding-left: var(--slide-spacing);
   position: relative; /* Needed for Next.js Image fill */
   overflow: hidden;
@@ -91,15 +83,16 @@ body {
 .embla__slide__img {
   border-radius: 0.5rem;
   display: block;
-  /* height: var(--slide-height); */
+  height: 554px;
   /* height: auto; */
   object-fit: cover;
-  overflow: hidden;
+  /* overflow: hidden; */
   margin: auto;
+  width: 85rem;
 }
 .embla__controls {
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: auto 2fr;
   justify-content: space-between;
   gap: 1.2rem;
   margin-top: 1.8rem;
@@ -125,7 +118,7 @@ body {
   box-shadow: inset 0 0 0 0.2rem var(--detail-medium-contrast);
   width: 3.6rem;
   height: 3.6rem;
-  z-index: 1;
+  z-index: 10 ;
   border-radius: 50%;
   color: var(--text-body);
   display: flex;

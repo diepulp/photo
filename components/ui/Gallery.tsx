@@ -46,6 +46,18 @@ export default function Gallery({ images }: GalleryProps): React.JSX.Element {
       </div>
 
       <EmblaCarousel slides={images} selectedIndex={selectedIndex} />
+
+      {/* <div className="grid grid-cols-1 gap-y-3 gap-x-6 w-full h-full m-auto overflow-hidden sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-3 ">
+        <Image
+          alt={`alt`}
+          src={`/gallery/IMG_8863-Enhanced-resized-NR.webp`}
+          fill
+          className="rounded object-center"
+          priority="false"
+          quality={75}
+          sizes="(min-width: 1280px) calc(25vw - 89px), (min-width: 1040px) calc(33.18vw - 127px), (min-width: 640px) calc(50vw - 35px), calc(100vw - 44px)"
+        />
+      </div> */}
     </>
   )
 }

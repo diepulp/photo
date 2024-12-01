@@ -25,27 +25,27 @@ const EmblaCarousel = ({ slides, selectedIndex }) => {
   const { prevBtnDisabled, nextBtnDisabled, onPrevButtonClick, onNextButtonClick } = usePrevNextButtons(emblaApi)
 
   return (
-    <div className="embla flex items-center justify-center border border-red-600">
-      <div className="embla__viewport flex justify-center align-center border border-orange-600-600 " ref={emblaRef}>
-        <div className="embla__container  border border-green-600">
+    <div className="embla flex items-center justify-center rounded">
+      <div className="embla__viewport flex justify-center items-center" ref={emblaRef}>
+        <div className="embla__container border border-green-600">
           {slides.map((image, index) => (
-            <div className="embla__slide" key={index}>
-              <div className="embla__slide__img  relative aspect-w-5 aspect-h-7 overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-5 xl:aspect-h-7 ">
+            <div className="embla__slide w-full" key={index}>
+              <div className="embla__slide__img relative w-full h-0 pb-[55.66%]">
                 <Image
-                  alt={`Slide  ${index + 1}`}
+                  alt={`Slide ${index + 1}`}
                   src={`/gallery/${image}`}
-                  width={200}
-                  height={800}
-                  className="rounded "
-                  priority="false"
+                  fill
+                  className="rounded object-contain"
+                  priority={false}
                   quality={75}
-                  sizes="(min-width: 1280px) calc(25vw - 89px), (min-width: 1040px) calc(33.18vw - 127px), (min-width: 640px) calc(50vw - 35px), calc(100vw - 44px)"
+                  sizes="(min-width: 1280px) 25vw, (min-width: 1040px) 33vw, (min-width: 640px) 50vw, 100vw"
                 />
-                <div className="embla__controls ">
-                  <div className="embla__buttons absolute bottom-0 left-1/2 md:transorm md:-translate-y-1/2 transform -translate-x-1/2 -translate-y-1/2 flex space-x-4">
-                    <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
-                    <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
-                  </div>
+                {/* Navigation Buttons */}
+              </div>
+              <div className="embla__controls relative">
+                <div className="embla__buttons absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-4 z-100">
+                  <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
+                  <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
                 </div>
               </div>
             </div>

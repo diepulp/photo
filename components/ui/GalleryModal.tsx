@@ -48,27 +48,23 @@ export default function GalleryModal({ isOpen, images, onClose, selectedIndex }:
   return (
     <>
       <Modal
-        size="full"
+        size="full" // Consider using responsive sizes like '3xl' if 'full' causes issues
         backdrop={backdrop}
         isOpen={isOpen}
         onClose={onClose}
         classNames={{
-          body: 'w-screen h-screen m-auto p-0 m-0 inset-0 outline outline-red-500 md:overflow-hidden',
-          wrapper: 'inset-0 absolute flex items-center justify-center md:overflow-hidden',
-          base: 'w-full h-full',
-          closeButton: 'outline focus:outline-none hover:bg-transparent ',
+          body: 'w-full h-full p-0 overflow-hidden', // Removed redundant/miscellaneous classes
+          wrapper: 'flex items-center justify-center', // Simplified for proper centering
+          base: '',
+          closeButton: 'outline focus:outline-none hover:bg-transparent',
         }}
       >
-        <ModalContent className="bg-transparent max-h-[95vh] sm:overflow-hidden">
-          {(onClose) => (
-            <>
-              <ModalBody className="bg-transparent">
-                <div className="">
-                  <EmblaCarousel slides={images} selectedIndex={selectedIndex} />
-                </div>
-              </ModalBody>
-            </>
-          )}
+        <ModalContent className="bg-transparent flex flex-col p-0 max-h-[100vh] w-full h-full">
+          <ModalBody className="bg-transparent flex-grow flex justify-center items-center">
+            <div className="w-full h-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+              <EmblaCarousel slides={images} selectedIndex={selectedIndex} />
+            </div>
+          </ModalBody>
         </ModalContent>
       </Modal>
     </>
