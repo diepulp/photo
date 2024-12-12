@@ -25,11 +25,11 @@ async function getImages(): Promise<string[]> {
 }
 
 export default async function CardGroup({ images }: Props) {
-  images = await getImages()
+  const fetcheImages = await getImages()
 
   return (
     <>
-      <Gallery images={images} />
+      <Gallery images={fetcheImages} />
       {/* <MasonryGallery images={images} /> */}
     </>
   )

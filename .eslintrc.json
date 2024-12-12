@@ -1,6 +1,6 @@
 {
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint"],
+  // "plugins": ["@typescript-eslint"],
   "extends": "next/core-web-vitals"
   // "rules": {
   //   "no-unused-vars": "warn" // or "error" depending on your preference

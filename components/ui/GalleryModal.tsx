@@ -12,6 +12,7 @@ import {
 } from '@nextui-org/react'
 import EmblaCarousel from './EmblaCarousel'
 import Image from 'next/image'
+import { PhotoCarousel } from './image-gallery'
 
 type GalleryModalProps = {
   isOpen: boolean
@@ -21,26 +22,13 @@ type GalleryModalProps = {
 }
 export default function GalleryModal({ isOpen, images, onClose, selectedIndex }: GalleryModalProps) {
   const { onOpen } = useDisclosure()
-  const [backdrop, setBackdrop] = useState('opaque')
   const [modalSize, setModalSize] = useState<number>()
-  console.log('selected index from gallery modal', selectedIndex)
-
-  const backdrops = ['opaque', 'blur', 'transparent']
-
-  const handleOpen = (backdrop) => {
-    setBackdrop(backdrop)
-    onOpen()
-  }
-
-  useEffect(() => {})
 
   useEffect(() => {
-    if (isOpen) {
-      setBackdrop('blur')
-    }
-  }, [isOpen])
+    // You can remove this empty effect
+  })
 
-  //Disable tht modal on small screens
+  //Disable the modal on small screens
   if (typeof window !== 'undefined' && window.innerWidth < 640) {
     return null
   }
@@ -48,22 +36,21 @@ export default function GalleryModal({ isOpen, images, onClose, selectedIndex }:
   return (
     <>
       <Modal
-        size="full" // Consider using responsive sizes like '3xl' if 'full' causes issues
-        backdrop={backdrop}
+        size="full"
+        backdrop="blur"
         isOpen={isOpen}
         onClose={onClose}
         classNames={{
-          body: 'w-full h-full p-0 overflow-hidden', // Removed redundant/miscellaneous classes
-          wrapper: 'flex items-center justify-center', // Simplified for proper centering
-          base: '',
-          closeButton: 'outline focus:outline-none hover:bg-transparent',
+          body: 'p-0',
+          wrapper: 'items-center justify-center',
+          base: 'bg-transparent',
+          closeButton: 'z-50 top-4 right-4 hover:bg-white/10',
+          backdrop: 'bg-black/40 backdrop-blur-md',
         }}
       >
-        <ModalContent className="bg-transparent flex flex-col p-0 max-h-[100vh] w-full h-full">
-          <ModalBody className="bg-transparent flex-grow flex justify-center items-center">
-            <div className="w-full h-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-              <EmblaCarousel slides={images} selectedIndex={selectedIndex} />
-            </div>
+        <ModalContent className="bg-transparent m-0 rounded-none h-screen w-screen flex items-center justify-center">
+          <ModalBody className="p-0 w-full h-full flex items-center justify-center">
+            <PhotoCarousel images={images} className="w-full h-full" />
           </ModalBody>
         </ModalContent>
       </Modal>

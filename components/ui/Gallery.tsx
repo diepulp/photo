@@ -10,6 +10,8 @@ import { useDisclosure } from '@nextui-org/react'
 import { useState } from 'react'
 import { use } from 'chai'
 import EmblaCarousel from './EmblaCarousel'
+import EmblaAutoHeight from './embla-auto-height'
+import { PhotoCarousel } from './image-gallery'
 
 type GalleryProps = {
   images: string[]
@@ -45,7 +47,7 @@ export default function Gallery({ images }: GalleryProps): React.JSX.Element {
         </div>
       </div>
 
-      <EmblaCarousel slides={images} selectedIndex={selectedIndex} />
+      <PhotoCarousel images={images} />
 
       {/* <div className="grid grid-cols-1 gap-y-3 gap-x-6 w-full h-full m-auto overflow-hidden sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-3 ">
         <Image

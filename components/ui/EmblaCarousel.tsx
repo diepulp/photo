@@ -11,7 +11,7 @@ const EmblaCarousel = ({ slides, selectedIndex }) => {
   // Embla Carousel options
   const OPTIONS = {
     loop: true,
-    speed: 10, // Adjusted for smoother transitions
+    speed: 10, // Adjust for smoother transitions
     draggable: true,
   }
 
@@ -21,7 +21,7 @@ const EmblaCarousel = ({ slides, selectedIndex }) => {
   // Scroll to selected index when it changes
   useEffect(() => {
     if (emblaApi) {
-      emblaApi.scrollTo(selectedIndex, true) // Scroll to the selected image smoothly
+      emblaApi.scrollTo(selectedIndex, true) // Smooth scroll to selected slide
     }
   }, [emblaApi, selectedIndex])
 
@@ -31,16 +31,17 @@ const EmblaCarousel = ({ slides, selectedIndex }) => {
   return (
     <div className="embla w-full h-full flex items-center justify-center rounded relative">
       {/* Embla Viewport */}
-      <div className="embla__viewport w-full h-full overflow-hidden" ref={emblaRef}>
+      <div className="embla__viewport w-full h-full border border-red-500" ref={emblaRef}>
         <div className="embla__container flex w-full h-full">
           {slides.map((image, index) => (
-            <div className="embla__slide flex-shrink-0 w-full h-full relative" key={index}>
-              <div className="embla__slide__img w-full h-full pb-[55.66%]">
+            <div className="embla__slide  w-full h-full flex items-center justify-center relative" key={index}>
+              {/* Image Container */}
+              <div className="embla__slide__img  w-full h-full rounded-lg  overflow-hidden flex items-center justify-center">
                 <Image
                   alt={`Slide ${index + 1}`}
                   src={`/gallery/${image}`}
                   fill
-                  className="rounded object-contain"
+                  className="object-cover"
                   priority={false}
                   quality={75}
                   sizes="(max-width: 640px) 100vw, (max-width: 1040px) 50vw, (min-width: 1280px) 25vw, 33vw"
@@ -52,6 +53,9 @@ const EmblaCarousel = ({ slides, selectedIndex }) => {
         </div>
       </div>
 
+      {/* Navigation Controls */}
+      {/* Previous Button */}
+      {/* Navigation Controls */}
       {/* Previous Button */}
       <div className="embla__controls absolute top-1/2 left-4 transform -translate-y-1/2 z-20">
         <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />

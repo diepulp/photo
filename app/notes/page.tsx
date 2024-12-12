@@ -24,7 +24,7 @@ import { useQuery, gql } from '@apollo/client'
 import { graphql } from '@/codegen/generations/core/gql'
 import { Movie } from '@/codegen/generations/core/graphql'
 // import { Get_Actors_NameQuery } from '@/codegen/generations/core/graphql'
-import { MoviesQuery } from '@/app/graphql/queries'
+// import { MoviesQuery } from '@/app/graphql/queries'
 import { useState } from 'react'
 
 interface MyDatePickerProps<T extends DateValue> extends DatePickerProps<T> {}
@@ -41,7 +41,7 @@ type Names = {
 function Movies() {
   const [date, setDate] = useState<Date | null | undefined>(null)
   //get the rypesctipt type
-  const { data, loading, error } = useQuery(MoviesQuery)
+  // const { data, loading, error } = useQuery(MoviesQuery)
   const movie = data?.movies
   console.log('Movies', movie)
   if (movie && movie.length > 0) {

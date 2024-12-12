@@ -35,7 +35,7 @@ body {
 
   --slide-height: auto;
   --slide-spacing: 1rem;
-  --slide-size: 80%;
+  --slide-size: 100%;
   display: flex;
   flex-direction: column;
   max-width: 90vw;
@@ -46,8 +46,8 @@ body {
 .embla__viewport {
   overflow: hidden;
   position: relative;
-  width: auto;
-  height: auto;
+  width: 100%;
+  height: 100%;
   align-items: center;
   justify-content: center;
   max-height: 100vh;
@@ -62,8 +62,8 @@ body {
   grid-auto-columns: 80%; /* Each slide covers 80% of the viewport */
   touch-action: pan-y pinch-zoom;
   margin-left: calc(var(--slide-spacing) * -1);
-  height: auto;
-  width: auto;
+  height: 100%;
+  width: 100%;
   overflow: hidden;
 }
 .embla__slide {
@@ -71,24 +71,21 @@ body {
   flex: 0 0 100%; /* Adapt slide size to its content */
   min-width: 0;
   max-width: 100%;
-  width: 85rem;
-  height: auto;
+  height: 100%;
+  width: 100%;
   margin: 0 auto;
-
   padding-left: var(--slide-spacing);
   position: relative; /* Needed for Next.js Image fill */
   overflow: hidden;
 }
 
 .embla__slide__img {
-  border-radius: 0.5rem;
+  border-radius: 1rem;
   display: block;
-  height: 554px;
-  /* height: auto; */
-  object-fit: cover;
-  /* overflow: hidden; */
+  width: 100%;
+  height: auto;
+  object-fit: contain;
   margin: auto;
-  width: 85rem;
 }
 .embla__controls {
   display: grid;
@@ -118,7 +115,7 @@ body {
   box-shadow: inset 0 0 0 0.2rem var(--detail-medium-contrast);
   width: 3.6rem;
   height: 3.6rem;
-  z-index: 10 ;
+  z-index: 10;
   border-radius: 50%;
   color: var(--text-body);
   display: flex;
