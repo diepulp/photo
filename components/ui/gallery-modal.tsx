@@ -10,7 +10,7 @@ import {
   useDisclosure,
   styled,
 } from '@nextui-org/react'
-import EmblaCarousel from './EmblaCarousel'
+import EmblaCarousel from './embla-carousel'
 import Image from 'next/image'
 import { PhotoCarousel } from './image-gallery'
 
@@ -36,7 +36,7 @@ export default function GalleryModal({ isOpen, images, onClose, selectedIndex }:
   return (
     <>
       <Modal
-        size="full"
+        size="3xl"
         backdrop="blur"
         isOpen={isOpen}
         onClose={onClose}
@@ -48,8 +48,8 @@ export default function GalleryModal({ isOpen, images, onClose, selectedIndex }:
           backdrop: 'bg-black/40 backdrop-blur-md',
         }}
       >
-        <ModalContent className="bg-transparent m-0 rounded-none h-screen w-screen flex items-center justify-center">
-          <ModalBody className="p-0 w-full h-full flex items-center justify-center">
+        <ModalContent className="bg-transparent m-0 rounded-none h-[99vh] w-screen flex items-center justify-center">
+          <ModalBody className="p-0 w-full h-[90vh] flex items-center justify-center">
             <PhotoCarousel images={images} className="w-full h-full" />
           </ModalBody>
         </ModalContent>

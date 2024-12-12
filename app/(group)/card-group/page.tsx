@@ -1,10 +1,10 @@
 import Experience from '../../../components/Experience'
 import ExpCard from '../../../components/ExpCard'
-import Gallery from '@/components/ui/Gallery'
+import Gallery from '@/components/ui/gallery'
 import path from 'path'
 import fs from 'fs'
 import Image from 'next/image'
-import MasonryGallery from '@/components/ui/MasonryGallery'
+import MasonryGallery from '@/components/ui/masonry-gallery'
 
 type Props = {
   images: string[]

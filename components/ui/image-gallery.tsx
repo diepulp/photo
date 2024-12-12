@@ -1,11 +1,13 @@
 'use client'
 
-import * as React from 'react'
+import React, { useState, useCallback, useEffect } from 'react'
 import Image from 'next/image'
 import useEmblaCarousel from 'embla-carousel-react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 // import { cn } from '@/lib/utils'
 import { Button } from '@nextui-org/react'
+import { NextButton, PrevButton, usePrevNextButtons } from './EmblaCarouselArrowButtons'
+import Fade from 'embla-carousel-fade'
 
 interface PhotoCarouselProps {
   images: {
@@ -22,22 +24,22 @@ function cn(...classes: String[]) {
 }
 
 export function PhotoCarousel({ images, className }: PhotoCarouselProps) {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true })
-  const [prevBtnDisabled, setPrevBtnDisabled] = React.useState(true)
-  const [nextBtnDisabled, setNextBtnDisabled] = React.useState(true)
-  const [selectedIndex, setSelectedIndex] = React.useState(0)
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [Fade()])
+  const [prevBtnDisabled, setPrevBtnDisabled] = useState(true)
+  const [nextBtnDisabled, setNextBtnDisabled] = useState(true)
+  const [selectedIndex, setSelectedIndex] = useState(0)
 
-  const scrollPrev = React.useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi])
-  const scrollNext = React.useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi])
+  const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi])
+  const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi])
 
-  const onSelect = React.useCallback(() => {
+  const onSelect = useCallback(() => {
     if (!emblaApi) return
     setSelectedIndex(emblaApi.selectedScrollSnap())
     setPrevBtnDisabled(!emblaApi.canScrollPrev())
     setNextBtnDisabled(!emblaApi.canScrollNext())
   }, [emblaApi])
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!emblaApi) return
     onSelect()
     emblaApi.on('select', onSelect)
@@ -53,7 +55,7 @@ export function PhotoCarousel({ images, className }: PhotoCarouselProps) {
               <div className="relative h-[100vh]">
                 <Image
                   src={`/gallery/${image}`}
-                  alt='alt'
+                  alt="alt"
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
                   className="object-contain"
@@ -73,6 +75,7 @@ export function PhotoCarousel({ images, className }: PhotoCarouselProps) {
           onClick={scrollPrev}
         >
           <ChevronLeft className="h-4 w-4" />
+
           <span className="sr-only">Previous slide</span>
         </Button>
         <Button
