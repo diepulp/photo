@@ -4,6 +4,7 @@ import Box from '@mui/material/Box'
 import Masonry from '@mui/lab/Masonry'
 import { styled } from '@mui/material/styles'
 import Image from 'next/image'
+import { cn } from '@/lib/utils/cn'
 
 interface MasonryGalleryProps {
   images: string[]
@@ -27,10 +28,6 @@ const StyledMasonry = styled(Masonry)({
   width: '100% !important',
 })
 
-function cn(...classes: string[]) {
-  return classes.filter(Boolean).join(' ')
-}
-
 export default function MasonryGallery({ images, onImageClick }: MasonryGalleryProps) {
   const handleImageClick = useCallback(
     (index: number) => {
@@ -38,13 +35,13 @@ export default function MasonryGallery({ images, onImageClick }: MasonryGalleryP
     },
     [onImageClick],
   )
-  
+
   const [loadedImages, setLoadedImages] = useState<{ [key: string]: boolean }>({})
 
   const handleImageLoad = (imagePath: string) => {
-    setLoadedImages(prev => ({
+    setLoadedImages((prev) => ({
       ...prev,
-      [imagePath]: true
+      [imagePath]: true,
     }))
   }
 
@@ -58,7 +55,7 @@ export default function MasonryGallery({ images, onImageClick }: MasonryGalleryP
         overflow: 'hidden',
       }}
     >
-      <StyledMasonry columns={{ xs: 1, sm: 2, md: 3 }} spacing={2}>
+      <StyledMasonry columns={{ xs: 1, sm: 2, md: 3 }} spacing={1}>
         {images.map((image, index) => {
           const aspectRatio = index % 3 === 0 ? '4/3' : index % 3 === 1 ? '3/4' : '1/1'
           const isLoaded = loadedImages[image]
@@ -66,20 +63,27 @@ export default function MasonryGallery({ images, onImageClick }: MasonryGalleryP
           return (
             <ImageWrapper key={image} onClick={() => handleImageClick(index)} className="group">
               <div
-                className="relative"
+                className="relative overflow-hidden"
                 style={{
                   aspectRatio,
                   width: '100%',
                 }}
               >
+                <div
+                  className={cn(
+                    'absolute inset-0 bg-gray-200 transition-opacity duration-700 ease-in-out',
+                    isLoaded ? 'opacity-0' : 'opacity-100',
+                  )}
+                />
                 <Image
                   src={`/gallery/${image}`}
                   alt={`Gallery image ${index + 1}`}
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className={cn(
-                    'object-cover transition-opacity duration-300',
-                    !isLoaded ? 'opacity-0' : 'opacity-100'
+                    'duration-700 ease-in-out group-hover:opacity-75',
+                    'object-cover',
+                    !isLoaded ? 'scale-105 blur-xl grayscale opacity-0' : 'scale-100 blur-0 grayscale-0 opacity-100',
                   )}
                   loading={index < 8 ? 'eager' : 'lazy'}
                   onLoad={() => handleImageLoad(image)}

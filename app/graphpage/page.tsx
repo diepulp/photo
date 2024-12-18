@@ -8,9 +8,9 @@ import { useQuery, gql } from '@apollo/client'
 const GraphMovies = async () => {
   const client = getClient()
   // console.log('client', client)
-  const { data } = await client.query<Get_Actors_NameQuery>({
-    query: Get_Actors_NameDocument,
-  })
+  // const { data } = await client.query<Get_Actors_NameQuery>({
+  //   query: Get_Actors_NameDocument,
+  // })
   // console.log('Data', data.users)
   // const dataArr = data.movies.map((t) => t)
   // console.log('Destructured data object', ...dataArr)

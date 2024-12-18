@@ -17,14 +17,21 @@ interface PhotoCarouselProps {
     height: number
   }[]
   className?: string
+  initialIndex: number
 }
 
 function cn(...classes: String[]) {
   return classes.filter(Boolean).join(' ')
 }
 
-export function PhotoCarousel({ images, className }: PhotoCarouselProps) {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [Fade()])
+export function PhotoCarousel({ images, className, initialIndex = 0 }: PhotoCarouselProps) {
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    {
+      loop: true,
+      startIndex: initialIndex,
+    },
+    [Fade()],
+  )
   const [prevBtnDisabled, setPrevBtnDisabled] = useState(true)
   const [nextBtnDisabled, setNextBtnDisabled] = useState(true)
   const [selectedIndex, setSelectedIndex] = useState(0)
@@ -54,12 +61,14 @@ export function PhotoCarousel({ images, className }: PhotoCarouselProps) {
             <div className="relative flex-[0_0_100%] min-w-0" key={index}>
               <div className="relative h-[100vh]">
                 <Image
-                  src={`/gallery/${image}`}
+                  src={image.src}
                   alt="alt"
                   fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+                  sizes="(min-width: 1640px) 363px, (min-width: 1040px) calc(30.34vw - 129px), (min-width: 900px) 207px, (min-width: 780px) calc(16vw + 185px), (min-width: 740px) 262px, (min-width: 600px) 35vw, calc(100vw - 128px)"
                   className="object-contain"
-                  priority={index === 0}
+                  fetchPriority={index === 0 ? 'high' : 'low'}
+                  quality={90}
+                  loading="lazy"
                 />
               </div>
             </div>
@@ -70,22 +79,22 @@ export function PhotoCarousel({ images, className }: PhotoCarouselProps) {
         <Button
           variant="outline"
           size="icon"
-          className="h-8 w-8 rounded-full bg-white/80 backdrop-blur-sm"
+          className="h-8 w-8 rounded-full bg-transparent backdrop-blur-sm "
           disabled={prevBtnDisabled}
           onClick={scrollPrev}
         >
-          <ChevronLeft className="h-4 w-4" />
+          <ChevronLeft className="h-4 w-4 text-white" />
 
           <span className="sr-only">Previous slide</span>
         </Button>
         <Button
           variant="outline"
           size="icon"
-          className="h-8 w-8 rounded-full bg-white/80 backdrop-blur-sm"
+          className="h-8 w-8 rounded-full bg-transparent backdrop-blur-sm"
           disabled={nextBtnDisabled}
           onClick={scrollNext}
         >
-          <ChevronRight className="h-4 w-4" />
+          <ChevronRight className="h-4 w-4 text-white" />
           <span className="sr-only">Next slide</span>
         </Button>
       </div>

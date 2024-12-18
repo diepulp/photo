@@ -1,11 +1,24 @@
 'use client'
-import { SocialIcon } from 'react-social-icons/component'
 import Link from 'next/link'
-import { useState } from 'react'
-import dynamic from 'next/dynamic'
-import { FaFacebook, FaTwitter, FaLinkedin } from 'react-icons/fa'
-import { IconContext } from 'react-icons'
+import { useState, lazy, Suspense } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import dynamic from 'next/dynamic'
+
+// Dynamically import icons
+const SocialIcons = {
+  FaFacebook: dynamic(() => import('react-icons/fa').then(mod => mod.FaFacebook), {
+    loading: () => <div className="w-[15px] h-[15px]" />,
+    ssr: false
+  }),
+  FaTwitter: dynamic(() => import('react-icons/fa').then(mod => mod.FaTwitter), {
+    loading: () => <div className="w-[15px] h-[15px]" />,
+    ssr: false
+  }),
+  FaLinkedin: dynamic(() => import('react-icons/fa').then(mod => mod.FaLinkedin), {
+    loading: () => <div className="w-[15px] h-[15px]" />,
+    ssr: false
+  })
+}
 
 type Props = {}
 
@@ -15,8 +28,6 @@ const Sidebar = (props: Props) => {
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen)
   }
-
-  // const SocialIcon = dynamic(() => import('react-social-icons').then((mod) => mod.SocialIcon), { ssr: false })
 
   return (
     <div className="sidebar w-64 h-full items-center mx-auto bg-[#FFFFFF] flex flex-col ">
@@ -47,7 +58,6 @@ const Sidebar = (props: Props) => {
                   exit={{ opacity: 0, height: 0 }}
                   transition={{ duration: 0.3 }}
                   className="mt-2 ml-4 space-y-2 overflow-hidden"
-                  className="mt-2 ml-4 space-y-2"
                 >
                   <li>
                     <Link href="/portfolio/weddings">Weddings</Link>
@@ -59,59 +69,52 @@ const Sidebar = (props: Props) => {
                     <Link href="/portfolio/events">Events</Link>
                   </li>
                   <li>
-                    <Link href="/portfolio/commercial">Family</Link>
+                    <Link href="/portfolio/family">Family</Link>
                   </li>
                   <li>
-                    <Link href="/portfolio/commercial">Couples</Link>
+                    <Link href="/portfolio/couples">Couples</Link>
                   </li>
                   <li>
-                    <Link href="/portfolio/commercial">Boudoir</Link>
+                    <Link href="/portfolio/boudoir">Boudoir</Link>
                   </li>
                   <li>
-                    <Link href="/portfolio/commercial">Graduates</Link>
+                    <Link href="/portfolio/graduates">Graduates</Link>
                   </li>
                   <li>
-                    <Link href="/portfolio/commercial">Newborn</Link>
+                    <Link href="/portfolio/newborn">Newborn</Link>
                   </li>
                   <li>
-                    <Link href="/portfolio/commercial">Milestones</Link>
+                    <Link href="/portfolio/milestones">Milestones</Link>
                   </li>
                 </motion.ul>
               )}
             </AnimatePresence>
           </li>
           <li className="mt-2">
-            <Link href="/portfolio/commercial">About</Link>
+            <Link href="/about">About</Link>
           </li>
           <li className="mt-2">
-            <Link href="/portfolio/commercial">Contact</Link>
+            <Link href="/contact">Contact</Link>
           </li>
           <li className="mt-2">
-            <a href="#" className="text-gray-300 hover:text-gray-500">
+            <Link href="/investment" className="text-gray-300 hover:text-gray-500">
               Investment
-            </a>
+            </Link>
           </li>
         </ul>
       </section>
 
-      <footer className=" text-gray-500 p-10 left-0 right-0 w-full mx-auto">
-        <div className="flex justify-start">
-          <span className="pr-1 text-gray-500">
-            <FaFacebook size={15} color="#3b5998" />
-          </span>
-          <span className="pr-1">
-            <FaTwitter size={15} color="#3b5998" />
-          </span>
-          <span className="">
-            <FaLinkedin size={15} color="#3b5998" />
-          </span>
-
-          {/* <SocialIcon
-            style={{ width: '2rem', height: '2rem' }}
-            url="https://www.linkedin.com/in/vladimir-ivanov-dev/"
-            fgColor="grey"
-            bgColor="transparent"
-          /> */}
+      <footer className="text-gray-500 p-10 left-0 right-0 w-full mx-auto">
+        <div className="flex justify-start space-x-2">
+          <button className="hover:opacity-80" aria-label="Facebook">
+            <SocialIcons.FaFacebook size={15} color="#3b5998" />
+          </button>
+          <button className="hover:opacity-80" aria-label="Twitter">
+            <SocialIcons.FaTwitter size={15} color="#3b5998" />
+          </button>
+          <button className="hover:opacity-80" aria-label="LinkedIn">
+            <SocialIcons.FaLinkedin size={15} color="#3b5998" />
+          </button>
         </div>
         <p className="text-xs mt-3">All content Copyright © 2024 anastasiya ivanova photography</p>
       </footer>

@@ -26,10 +26,13 @@ const BlurImage = ({ image, index }: Image) => {
             src={`/gallery/${image}`}
             fill
             sizes="(min-width: 1280px) calc(25vw - 89px), (min-width: 1040px) calc(33.18vw - 127px), (min-width: 640px) calc(50vw - 35px), calc(100vw - 44px)"
-            className={cn('object-cover transition-opacity duration-300', !isLoaded ? 'opacity-0' : 'opacity-100')}
-            // placeholder="blur"
-            // blurDataURL={`/gallery/${image}`}
-            qulity={50}
+            className={cn(
+              'duration-700 ease-in-out group-hover:opacity-75 object-cover',
+              isLoading ? 'scale-110 blur-2xl grayscale' : 'scale-100 blur-0 grayscale-0',
+            )}
+            fetchPriority={index === 0 ? 'high' : 'low'}
+            quality={75}
+            priority={index === 0}
             onLoad={(e) => {
               setLoading(false)
             }}

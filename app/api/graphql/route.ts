@@ -30,17 +30,11 @@ const initServer = async () => {
  */
 const server = new ApolloServer({
   schema: await initServer(),
-  context: async ({ req }) => {
-    return {
-      ogm,
-      req,
-    }
-  },
 })
 
 // Typescript: req has the type NextRequest
 const handler = startServerAndCreateNextHandler<NextRequest>(server, {
-  context: async (req) => ({ req }),
+  context: async (req) => ({ ogm, req }),
 })
 
 export { handler as GET, handler as POST }

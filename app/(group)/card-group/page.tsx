@@ -1,36 +1,19 @@
-import Experience from '../../../components/Experience'
-import ExpCard from '../../../components/ExpCard'
 import Gallery from '@/components/ui/gallery'
-import path from 'path'
-import fs from 'fs'
-import Image from 'next/image'
-import MasonryGallery from '@/components/ui/masonry-gallery'
+import { getImages } from '@/lib/utils'
+import { Metadata } from 'next'
 
-type Props = {
-  images: string[]
+export const metadata: Metadata = {
+  other: {
+    'Cache-Control': 'public, max-age=31536000, must-revalidate',
+  },
 }
 
-async function getImages(): Promise<string[]> {
-  try {
-    const galleryPath = path.join(process.cwd(), 'public/gallery')
-    const files = fs.readdirSync(galleryPath)
-
-    // Filter to include only image files
-    const images = files.filter((file) => /\.(jpg|jpeg|png|gif|webp|avif)$/.test(file))
-    return images
-  } catch (error) {
-    console.error('Error reading gallery images:', error)
-    return []
-  }
-}
-
-export default async function CardGroup({ images }: Props) {
-  const fetcheImages = await getImages()
+export default async function CardGroup() {
+  const fetchImages = await getImages()
 
   return (
-    <>
-      <Gallery images={fetcheImages} />
-      {/* <MasonryGallery images={images} /> */}
-    </>
+    <div className="container mx-auto px-4 py-8">
+      <Gallery images={fetchImages} />
+    </div>
   )
 }
