@@ -9,14 +9,14 @@ const EmblaCarousel = ({ slides, selectedIndex }) => {
   console.log('slides from embla', slides)
 
   // Embla Carousel options
-  const OPTIONS = {
+  const options = {
     loop: true,
     speed: 10, // Adjust for smoother transitions
     draggable: true,
   }
 
   // Initialize Embla Carousel with Fade effect
-  const [emblaRef, emblaApi] = useEmblaCarousel(OPTIONS, [Fade()])
+  const [emblaRef, emblaApi] = useEmblaCarousel(options, [Fade()])
 
   // Scroll to selected index when it changes
   useEffect(() => {

@@ -1,18 +1,19 @@
 'use client'
-import React, { Component } from 'react'
+import React, {  } from 'react'
 import Image from 'next/image'
 import { useState } from 'react'
 
 type Image = {
   image: string
   key: number
+  index: number
 }
 function cn(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
-const imageLoader = ({ src, width, quality }) => {
-  return `https://example.com/${src}?w=${width}&q=${quality || 75}`
-}
+// const imageLoader = ({ src, width, quality }) => {
+//   return `https://example.com/${src}?w=${width}&q=${quality || 75}`
+// }
 
 const BlurImage = ({ image, index }: Image) => {
   const [isLoading, setLoading] = useState(true)

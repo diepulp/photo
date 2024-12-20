@@ -8,20 +8,19 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { Button } from '@nextui-org/react'
 import { NextButton, PrevButton, usePrevNextButtons } from './EmblaCarouselArrowButtons'
 import Fade from 'embla-carousel-fade'
+import { cn } from '@/lib/utils'
 
-interface PhotoCarouselProps {
-  images: {
-    src: string
-    alt: string
-    width: number
-    height: number
-  }[]
-  className?: string
-  initialIndex: number
+interface CarouselImage {
+  src: string
+  alt: string
+  width: number
+  height: number
 }
 
-function cn(...classes: String[]) {
-  return classes.filter(Boolean).join(' ')
+interface PhotoCarouselProps {
+  images: CarouselImage[]
+  className?: string
+  initialIndex?: number
 }
 
 export function PhotoCarousel({ images, className, initialIndex = 0 }: PhotoCarouselProps) {
@@ -32,9 +31,9 @@ export function PhotoCarousel({ images, className, initialIndex = 0 }: PhotoCaro
     },
     [Fade()],
   )
-  const [prevBtnDisabled, setPrevBtnDisabled] = useState(true)
-  const [nextBtnDisabled, setNextBtnDisabled] = useState(true)
-  const [selectedIndex, setSelectedIndex] = useState(0)
+  const [prevBtnDisabled, setPrevBtnDisabled] = useState<boolean>(true)
+  const [nextBtnDisabled, setNextBtnDisabled] = useState<boolean>(true)
+  const [selectedIndex, setSelectedIndex] = useState<number>(0)
 
   const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi])
   const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi])
@@ -62,13 +61,15 @@ export function PhotoCarousel({ images, className, initialIndex = 0 }: PhotoCaro
               <div className="relative h-[100vh]">
                 <Image
                   src={image.src}
-                  alt="alt"
+                  alt={image.alt}
+                  width={image.width}
+                  height={image.height}
                   fill
                   sizes="(min-width: 1640px) 363px, (min-width: 1040px) calc(30.34vw - 129px), (min-width: 900px) 207px, (min-width: 780px) calc(16vw + 185px), (min-width: 740px) 262px, (min-width: 600px) 35vw, calc(100vw - 128px)"
                   className="object-contain"
                   fetchPriority={index === 0 ? 'high' : 'low'}
                   quality={90}
-                  loading="lazy"
+                  loading={index === 0 ? 'eager' : 'lazy'}
                 />
               </div>
             </div>
@@ -77,21 +78,22 @@ export function PhotoCarousel({ images, className, initialIndex = 0 }: PhotoCaro
       </div>
       <div className="absolute left-4 right-4 top-1/2 flex items-center justify-between -translate-y-1/2">
         <Button
-          variant="outline"
-          size="icon"
-          className="h-8 w-8 rounded-full bg-transparent backdrop-blur-sm "
-          disabled={prevBtnDisabled}
+          variant="light"
+          size="sm"
+          isIconOnly
+          className="h-8 w-8 rounded-full bg-white/10 backdrop-blur-sm"
+          isDisabled={prevBtnDisabled}
           onClick={scrollPrev}
         >
           <ChevronLeft className="h-4 w-4 text-white" />
-
           <span className="sr-only">Previous slide</span>
         </Button>
         <Button
-          variant="outline"
-          size="icon"
-          className="h-8 w-8 rounded-full bg-transparent backdrop-blur-sm"
-          disabled={nextBtnDisabled}
+          variant="light"
+          size="sm"
+          isIconOnly
+          className="h-8 w-8 rounded-full bg-white/10 backdrop-blur-sm"
+          isDisabled={nextBtnDisabled}
           onClick={scrollNext}
         >
           <ChevronRight className="h-4 w-4 text-white" />
@@ -102,10 +104,11 @@ export function PhotoCarousel({ images, className, initialIndex = 0 }: PhotoCaro
         {images.map((_, index) => (
           <Button
             key={index}
-            variant="outline"
-            size="icon"
+            variant="light"
+            size="sm"
+            isIconOnly
             className={cn(
-              'h-1/2 w-1/2 rounded-full bg-white/80 backdrop-blur-sm',
+              'h-2 w-2 min-w-unit-2 rounded-full bg-white/80 backdrop-blur-sm',
               selectedIndex === index && 'scale-125 bg-white',
             )}
             onClick={() => emblaApi?.scrollTo(index)}

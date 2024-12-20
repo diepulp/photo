@@ -1,12 +1,15 @@
 'use client'
 import React, { useEffect, useState, useCallback } from 'react'
-import {
-  Modal,
-  ModalContent,
-  ModalBody,
-} from '@nextui-org/react'
-import { PhotoCarousel } from './photo-carousel'
+import { Modal, ModalContent, ModalBody } from '@nextui-org/react'
 import dynamic from 'next/dynamic'
+import { useMediaQuery } from '@/hooks/use-media-query'
+
+interface CarouselImage {
+  src: string
+  alt: string
+  width: number
+  height: number
+}
 
 // Dynamically import PhotoCarousel for better code splitting
 const DynamicPhotoCarousel = dynamic(
@@ -17,7 +20,7 @@ const DynamicPhotoCarousel = dynamic(
   }
 )
 
-type GalleryModalProps = {
+interface GalleryModalProps {
   isOpen: boolean
   onClose: () => void
   images: string[]
@@ -25,16 +28,18 @@ type GalleryModalProps = {
 }
 
 export default function GalleryModal({ isOpen, images, onClose, selectedIndex }: GalleryModalProps) {
-  // Convert string[] to PhotoCarouselProps image format
+  const isMobile = useMediaQuery('(max-width: 640px)')
+  
+  // Convert string[] to CarouselImage format
   const formattedImages = images.map(image => ({
     src: `/gallery/${image}`,
-    alt: image.split('.')[0] || 'Gallery image',
+    alt: image.split('.')[0].replace(/-/g, ' ') || 'Gallery image',
     width: 1920,
     height: 1080
   }))
 
   // Early return for mobile devices
-  if (typeof window !== 'undefined' && window.innerWidth < 640) {
+  if (isMobile) {
     return null
   }
 

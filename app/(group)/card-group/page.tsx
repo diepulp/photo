@@ -1,5 +1,5 @@
 import Gallery from '@/components/ui/gallery'
-import { getImages } from '@/lib/utils'
+import { getImages } from '@/lib/server-actions'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
